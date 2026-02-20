@@ -11,7 +11,7 @@ interface WhyUsItem {
 export interface IAboutUsWhyUS {
   heading: string;
   sub_heading: string;
-  listItems: WhyUsItem[]; 
+  listItems: WhyUsItem[];
 }
 
 const WhyUs = ({ whyUsData }: { whyUsData: IAboutUsWhyUS }) => {

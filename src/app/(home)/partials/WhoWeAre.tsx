@@ -23,10 +23,12 @@ interface WhoWeAreProps {
     total_packages: number;
     year_experience: number;
   };
-  testimonialData: {
-    records: TestimonialRecord[];
-    rating: number;
-  } | TestimonialRecord[];
+  testimonialData:
+    | {
+        records: TestimonialRecord[];
+        rating: number;
+      }
+    | TestimonialRecord[];
 }
 
 const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
@@ -38,10 +40,10 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
 
   const avgRating = useMemo(() => {
     if (!records || records.length === 0) return "4.9";
-    
+
     const total = records.reduce((acc, curr) => acc + (curr.rating || 0), 0);
     const avg = total / records.length;
-    
+
     return avg > 0 ? avg.toFixed(1) : "4.9";
   }, [records]);
 
@@ -82,7 +84,9 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
                       <Globe2 size={24} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Local Expertise</h4>
+                      <h4 className="font-bold text-gray-900">
+                        Local Expertise
+                      </h4>
                       <p className="text-sm text-gray-500 mt-1">
                         Access to 500+ partners across 77 districts.
                       </p>
@@ -94,7 +98,9 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
                       <Compass size={24} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Tailored Paths</h4>
+                      <h4 className="font-bold text-gray-900">
+                        Tailored Paths
+                      </h4>
                       <p className="text-sm text-gray-500 mt-1">
                         Itineraries built for your pace.
                       </p>

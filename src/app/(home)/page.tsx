@@ -29,7 +29,7 @@ const Page = async () => {
         <WhoWeAre
           whoWeAreData={aboutUsData?.data?.who_we_are}
           stats={aboutUsData?.data?.stats}
-          testimonialData={testimonialsData?.data?.records ?? []  }
+          testimonialData={testimonialsData?.data?.records ?? []}
         />
         <TopDeals topDeals={isTopDeal?.data?.records} />
         <TopTours topTours={isTopTour?.data?.records} />

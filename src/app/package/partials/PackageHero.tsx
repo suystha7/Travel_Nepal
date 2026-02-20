@@ -11,7 +11,7 @@ const PackageHero = ({ packageHero }: { packageHero: IHeroRecord[] }) => {
   const [index] = useState(0);
   const currentItem = packageHero?.[0];
   const sliderImages = currentItem?.image || [];
-  
+
   const mainImage = sliderImages[index]?.image || null;
 
   return (
@@ -36,7 +36,7 @@ const PackageHero = ({ packageHero }: { packageHero: IHeroRecord[] }) => {
               />
             </motion.div>
           )}
-        </AnimatePresence>  
+        </AnimatePresence>
 
         <div className="absolute inset-0 bg-black/40" />
 
@@ -65,7 +65,9 @@ const PackageHero = ({ packageHero }: { packageHero: IHeroRecord[] }) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className={`relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 h-48 w-36 ${
-                    i === index ? "scale-110 border-white/40 z-20" : "opacity-70"
+                    i === index
+                      ? "scale-110 border-white/40 z-20"
+                      : "opacity-70"
                   }`}
                 >
                   <Image

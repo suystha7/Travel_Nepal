@@ -44,7 +44,7 @@ interface IEndpoints {
     TESTIMONIAL: string;
     MISSION_VISION: string;
     WHY_US: string;
-    TEAM: string
+    TEAM: string;
   };
 
   SUBSCRIBE: string;
@@ -124,7 +124,7 @@ export const endpoints: IEndpoints = {
     TESTIMONIAL: "/testimonial",
     TEAM: "/team",
     MISSION_VISION: "/mission-vision",
-    WHY_US: "/why-us"
+    WHY_US: "/why-us",
   },
 
   BREADCRUMB: {

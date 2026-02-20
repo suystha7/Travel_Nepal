@@ -26,7 +26,7 @@ const Footer = async () => {
       getCategories(),
       getHomeData(),
       getOrgData(),
-      getBlogData(),  
+      getBlogData(),
     ]);
 
     const categories =

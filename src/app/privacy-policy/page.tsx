@@ -6,7 +6,9 @@ import { createMetadata } from "@/utils/createMetadata";
 import Privacy from "./partials/PrivacyPolicy";
 
 export async function generateMetadata() {
-  const { data } = await getStaticData<ISeoResponse>(endpoints.SEO.PRIVACY_POLICY);
+  const { data } = await getStaticData<ISeoResponse>(
+    endpoints.SEO.PRIVACY_POLICY
+  );
   const seoRecord = data?.records?.[0] ?? null;
   const meta = createMetadata(seoRecord);
   return meta;

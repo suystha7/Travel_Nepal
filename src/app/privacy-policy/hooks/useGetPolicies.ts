@@ -1,4 +1,3 @@
-
 import { safeFetch } from "@/utils/safeFetch";
 
 export const getPrivacyPolicyData = async () => {

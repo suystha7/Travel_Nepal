@@ -10,6 +10,11 @@
     "format": "prettier --write .",
     "prepare": "husky"
   },
+   "pnpm": {
+    "overrides": {
+      "html-encoding-sniffer": "4.0.0"
+    }
+  },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@gsap/react": "^2.1.2",

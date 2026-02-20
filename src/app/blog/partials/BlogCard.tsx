@@ -21,7 +21,7 @@ export const BlogCard = ({ blog }: BlogCardProps) => (
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-110"
       />
-      
+
       <div className="absolute top-4 left-4 z-10">
         <span className="bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white shadow-sm font-bold tracking-wider">
           {blog.category || "General"}

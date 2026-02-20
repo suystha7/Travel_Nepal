@@ -16,7 +16,10 @@ export const SERVICE_CHOICES = [
 export const contactSchema = Yup.object({
   fullname: Yup.string()
     .trim()
-    .matches(/^[A-Za-z\s'-]+$/, "Name cannot contain numbers or special characters")
+    .matches(
+      /^[A-Za-z\s'-]+$/,
+      "Name cannot contain numbers or special characters"
+    )
     .min(2, "Name is too short")
     .max(50, "Name is too long")
     .required("Name is required"),
@@ -29,7 +32,10 @@ export const contactSchema = Yup.object({
     .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
     .required("Phone number is required"),
   service: Yup.string()
-    .oneOf(SERVICE_CHOICES.map(c => c.value), "Invalid service selection")
+    .oneOf(
+      SERVICE_CHOICES.map((c) => c.value),
+      "Invalid service selection"
+    )
     .required("Please select a service"),
   message: Yup.string()
     .trim()

@@ -45,7 +45,6 @@ const BlogStats = ({
     handleCopyLink,
   } = useBlogActions(slug, isLoggedIn, onLikeToggle);
 
-
   const handleMainShareClick = async () => {
     if (navigator.share) {
       try {

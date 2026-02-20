@@ -7,7 +7,9 @@ import { createMetadata } from "@/utils/createMetadata";
 import Refund from "./partials/RefundPolicy";
 
 export async function generateMetadata() {
-  const { data } = await getStaticData<ISeoResponse>(endpoints.SEO.REFUND_POLICY);
+  const { data } = await getStaticData<ISeoResponse>(
+    endpoints.SEO.REFUND_POLICY
+  );
   const seoRecord = data?.records?.[0] ?? null;
   const meta = createMetadata(seoRecord);
   return meta;

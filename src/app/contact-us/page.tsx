@@ -11,7 +11,9 @@ import { createMetadata } from "@/utils/createMetadata";
 
 export async function generateMetadata() {
   try {
-    const response = await getStaticData<ISeoResponse>(endpoints.SEO.CONTACT_US);
+    const response = await getStaticData<ISeoResponse>(
+      endpoints.SEO.CONTACT_US
+    );
     const seoRecord = response?.data?.records?.[0] ?? null;
     return createMetadata(seoRecord);
   } catch (error) {
@@ -26,9 +28,13 @@ const Page = async () => {
       getOrgData(),
     ]);
 
-    const contactUsData = contactResult.status === "fulfilled" ? contactResult.value.contactUsData : null;
-    const socialMediaData = orgResult.status === "fulfilled" ? orgResult.value.socialMediaData : null;
-    
+    const contactUsData =
+      contactResult.status === "fulfilled"
+        ? contactResult.value.contactUsData
+        : null;
+    const socialMediaData =
+      orgResult.status === "fulfilled" ? orgResult.value.socialMediaData : null;
+
     const contactHero = contactUsData?.data?.records ?? [];
     const socialMedia = socialMediaData?.data?.records?.[0] ?? null;
 
