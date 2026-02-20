@@ -10,7 +10,6 @@
     "format": "prettier --write .",
     "prepare": "husky"
   },
- 
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@gsap/react": "^2.1.2",
