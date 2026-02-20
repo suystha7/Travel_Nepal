@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["jsdom", "html-encoding-sniffer"],
-  transpilePackages: ["@exodus/bytes", "html-encoding-sniffer", "whatwg-url", "abab"],
   images: {
     remotePatterns: [
       {
@@ -101,6 +99,19 @@ const nextConfig: NextConfig = {
         port: "8002",
         pathname: "/media/**",
       },
+      {
+        protocol: "http",
+        hostname: "192.168.1.104",
+        port: "8000",
+        pathname: "/media/**",
+      },
+      {
+        protocol: "http",
+        hostname: "192.168.1.94",
+        port: "8002",
+        pathname: "/media/**",
+      },
+
       {
         protocol: "http",
         hostname: "api.careegram.com",
