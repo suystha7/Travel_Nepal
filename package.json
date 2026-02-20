@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "prepare": "husky"
   },
-   "pnpm": {
+    "pnpm": {
     "overrides": {
       "html-encoding-sniffer": "4.0.0"
     }
