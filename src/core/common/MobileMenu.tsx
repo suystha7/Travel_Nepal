@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface IMobileMenuListProps {
-  menu: {
+  menu?: {
     [key: string]: any;
   };
   pathname: string;
@@ -13,7 +13,7 @@ interface IMobileMenuListProps {
 }
 
 export const MobileMenuList = ({
-  menu,
+  menu = {},
   pathname,
   closeMenu,
   level = 0,
@@ -44,8 +44,10 @@ export const MobileMenuList = ({
   return (
     <ul className="flex flex-col space-y-1 mb-2 overflow-y-auto overscroll-contain max-h-screen">
       {level === 0 && <>{renderLink("Home", "/")}</>}
-      {/* DYNAMIC MENU */}
-      {Object.entries(menu).map(([key, value]) => {
+
+      {Object.entries(menu || {}).map(([key, value]) => {
+        if (!value) return null;
+
         if (Array.isArray(value)) {
           if (value.length === 0) return null;
           return (
@@ -64,7 +66,7 @@ export const MobileMenuList = ({
               </button>
               {openGroups[key] && (
                 <ul className="ml-2 border-l">
-                  {value.map((item) => renderLink(item.name, item.url))}
+                  {value.map((item: any) => renderLink(item.name, item.url))}
                 </ul>
               )}
             </li>
@@ -72,7 +74,7 @@ export const MobileMenuList = ({
         }
 
         const open = openGroups[key];
-        const childrenKeys = Object.keys(value);
+        const childrenKeys = Object.keys(value || {});
         if (!childrenKeys.length) return null;
 
         return (
@@ -106,7 +108,7 @@ export const MobileMenuList = ({
         <>
           {renderLink("Packages", "/package")}
           {renderLink("About Us", "/about-us")}
-          {renderLink("Blog", "/blog")}
+          {renderLink("FAQs", "/faq")}
           {renderLink("Contact Us", "/contact-us")}
         </>
       )}

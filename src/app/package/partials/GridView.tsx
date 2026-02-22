@@ -10,6 +10,7 @@ import { IPackageRecord } from "../interface/IPackageData.interface";
 import { useModal } from "@/core/context/ModalContext";
 import { showErrorMessage } from "@/utils/toastMessage/toast.message";
 import RichText from "@/utils/richText";
+import FallbackImg from "@/assest/package1.png"
 
 interface IProps {
   activeTab: string;
@@ -65,7 +66,7 @@ const GridView: React.FC<IProps> = ({ content }) => {
             <div className="relative h-60 w-full overflow-hidden rounded-t-2xl">
               <Link href={`/package/${packageItem?.slug}`}>
                 <Image
-                  src={packageItem?.image || "/placeholder.png"}
+                  src={packageItem?.main_image || FallbackImg}
                   alt={packageItem?.name || "Tour Package"}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -74,7 +75,9 @@ const GridView: React.FC<IProps> = ({ content }) => {
 
               <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-2xl text-xs font-bold tracking-wide z-10">
                 <MapPin size={14} className="text-white" />
-                {packageItem?.destination}
+                {Array.isArray(packageItem?.city)
+                  ? packageItem.city.join(", ")
+                  : packageItem?.city}
               </div>
 
               <div className="flex flex-col gap-2"></div>
@@ -85,7 +88,7 @@ const GridView: React.FC<IProps> = ({ content }) => {
                 <div className="hidden lg:flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-1 text-gray-900 font-medium">
                     <Tag size={16} className="text-gray-900" />
-                    {packageItem?.package_type?.name}
+                    {packageItem?.package_type}
                   </div>
                   <div className="flex items-center gap-1 text-gray-900 font-medium">
                     <Clock size={16} className="text-gray-900" />

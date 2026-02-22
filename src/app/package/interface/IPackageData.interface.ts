@@ -8,7 +8,8 @@ export interface IPackageRecord {
   name: string;
   slug: string;
   description: string;
-  image: string;
+  category: string;
+  main_image: string;
   current_price: string;
   previous_price: string;
   destination: string;
@@ -18,7 +19,7 @@ export interface IPackageRecord {
   group_size: string;
   season: string;
   meals: string;
-  package_type: { name: string; slug: string };
+  package_type: string;
   accommodations: string;
   activity_duration: string;
   max_altitude: string;
@@ -38,6 +39,8 @@ export interface IPackageRecord {
   equipment: string;
   is_top_tour: boolean;
   is_top_deals: boolean;
+  total_reviews: number;
+  average_rating: number;
 }
 
 export interface IPackageItinerary {

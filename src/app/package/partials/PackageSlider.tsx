@@ -19,7 +19,7 @@ const PackageSlider = () => {
   };
 
   return (
-    <div className="flex flex-row gap-10 my-[25rem] relative">
+    <div className="flex flex-row gap-10 my-100 relative">
       <div className="my-10 relative flex-1">
         <p className="typography-sub-h1-regular mb-3 -mt-50 ml-[38%]">
           {exclusiveHolidayData[index].title}

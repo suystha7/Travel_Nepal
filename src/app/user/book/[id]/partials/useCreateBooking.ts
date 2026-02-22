@@ -29,7 +29,6 @@ const usePostDataMutation = () => {
     data: string | Record<string, object>;
     invalidateTag: string;
   }) => {
-    // console.log("Posting data to:", url);
     return Promise.resolve();
   };
 

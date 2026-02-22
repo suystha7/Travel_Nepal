@@ -67,9 +67,9 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
 
   return (
     <div className="w-full bg-white p-6 rounded-2xl border border-gray-200">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-end">
-        <div className="lg:col-span-4 space-y-4">
-          <div className="flex justify-between items-center px-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-center">
+        <div className="lg:col-span-4 ">
+          <div className="flex justify-between items-center">
             <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">
               Budget Range
             </label>
@@ -77,7 +77,7 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
               Rs.{values[0]} — Rs.{values[1]}
             </span>
           </div>
-          <div className="px-2 pt-2">
+          <div className="px-2 pt-5">
             <Range
               step={STEP}
               min={MIN}
@@ -88,7 +88,7 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
               renderTrack={({ props, children }) => (
                 <div
                   {...props}
-                  className="h-1.5 w-full rounded-full transition-all"
+                  className="h-1 w-full rounded-full transition-all"
                   style={{ background: trackBackground }}
                 >
                   {children}
@@ -97,8 +97,8 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
               renderThumb={({ props, isDragged }) => (
                 <div
                   {...props}
-                  className={`h-5 w-5 rounded-full bg-white border-2 border-primary-500 shadow-md outline-none transition-all ${
-                    isDragged ? "scale-125 shadow-lg" : "hover:scale-110"
+                  className={`h-5 w-5 rounded-full bg-white border-2 border-primary-500 shadow-md outline-none transition-all overflow-hidden ${
+                    isDragged ? "shadow-lg" : "hover:scale-110"
                   }`}
                 />
               )}
@@ -135,7 +135,7 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
 
         <div className="lg:col-span-3 space-y-3">
           <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] px-1">
-            Category
+            Trip Type
           </label>
           <Select
             value={tripType || "all"}
@@ -150,7 +150,7 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
               </div>
             </SelectTrigger>
             <SelectContent className="rounded-xl border-gray-200 shadow-xl">
-              <SelectItem value="all">All Categories</SelectItem>
+              <SelectItem value="all">All Trip Types</SelectItem>
               {tripTypes.map((item) => (
                 <SelectItem key={item.id} value={item.slug}>
                   {item.name}

@@ -50,8 +50,8 @@ const BlogStats = ({
       try {
         await navigator.share({ title, text: title, url });
         trackShare();
-      } catch {
-        console.log("Share cancelled");
+        } catch (error) {
+          console.error("Native share failed:", error);
       }
     } else {
       setShowShareMenu((prev) => !prev);

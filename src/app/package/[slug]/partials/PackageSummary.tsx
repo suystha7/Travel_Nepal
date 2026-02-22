@@ -34,7 +34,7 @@ const PackageSummary: React.FC<IProps> = ({
         <div className="flex items-center gap-2 mt-1">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <p className="text-white/70 text-xs font-medium tracking-wider">
-            Pricing for {groupSize}
+            Pricing for {groupSize} person{groupSize !== "1" && "s"}
           </p>
         </div>
       </div>

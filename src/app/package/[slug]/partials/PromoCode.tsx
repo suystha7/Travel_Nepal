@@ -77,7 +77,7 @@ const PromoCode: React.FC<IProps> = ({ orgData }) => {
       </div> */}
 
       <div className="rounded-xl overflow-hidden border border-gray-200">
-        <div className="px-5 py-4 flex justify-between items-start">
+        <div className="px-5 py-4 flex justify-between items-center">
           <div>
             <h3 className="font-bold text-lg">Need Assistance?</h3>
             <p className="text-gray-600 text-xs">

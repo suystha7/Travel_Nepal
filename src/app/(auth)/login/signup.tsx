@@ -20,8 +20,6 @@ const Register: React.FC<Props> = ({ isOpen, onClose, onSuccess }) => {
   const { openModal } = useModal();
 
   const { formik, isLoading } = useSignUpForm({ onSuccess });
-  // console.log(formik.values);
-  // console.log(formik.errors);
 
   const handleSwitchModal = () => {
     onClose();
@@ -37,7 +35,7 @@ const Register: React.FC<Props> = ({ isOpen, onClose, onSuccess }) => {
       }}
     >
       <DialogContent
-        className="w-[29rem] p-[2rem] rounded-[1.5rem] shadow-[0px_0px_12px_0px_#00000026] bg-white"
+        className="w-115 p-8 rounded-xl shadow-md bg-white"
         style={{ maxHeight: "90vh", overflowY: "auto" }}
       >
         <DialogHeader className="typography-h6-regular font-semibold ">
@@ -111,7 +109,7 @@ const Register: React.FC<Props> = ({ isOpen, onClose, onSuccess }) => {
 
             <label
               htmlFor="terms"
-              className="typography- cursor-pointer !text-grey-300"
+              className="typography- cursor-pointer text-grey-300!"
             >
               I aggree with{" "}
               <Link href="/terms-conditions" className="text-yellow-500">
@@ -127,7 +125,7 @@ const Register: React.FC<Props> = ({ isOpen, onClose, onSuccess }) => {
           <button
             type="submit"
             disabled={isLoading}
-            className={` w-full rounded-full bg-primary-500 hover:bg-primary-600 text-white shadow-[0px_2px_4px_-2px_rgba(0,0,0,0.10)] shadow-md py-2 lg:py-2.5 lg:px-5 font-medium typography-extra-large-body cursor-pointer ${
+            className={` w-full rounded-full bg-primary-500 hover:bg-primary-600 text-white shadow-md py-2 lg:py-2.5 lg:px-5 font-medium typography-extra-large-body cursor-pointer ${
               isLoading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

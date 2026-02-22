@@ -21,9 +21,7 @@ export interface IPackageDetailsData {
   country: string;
   category: { name: string; id: string };
   availability: string[];
-  package_type: { name: string; id: string; slug: string };
-  activity: IActivity[];
-  accommodations: IAccommodation[];
+  package_type: { name: string; id: string };
   city: IPackageDetailsCity[];
   highlights: IPackageDetailsHighlight[];
   gallery: IPackageDetailsGallery[];
@@ -32,38 +30,10 @@ export interface IPackageDetailsData {
   exclusions: IPackageDetailsExclusion[];
   notices: IPackageDetailsNotice[];
   itinerary: IPackageDetailsItinerary[];
-  meals: IPackageDetailsMeals[];
   is_top_tour: boolean;
   is_top_deals: boolean;
 }
 
-export interface IPackageDetailsMeals {
-  id: string;
-  title: string;
-  description: string;
-  package: Package;
-  itinerary: Itinerary;
-  meal_type: string;
-}
-
-export interface IActivity {
-  id: string;
-  title: string;
-  description: string;
-  package: Package;
-  itinerary: Itinerary;
-}
-
-export interface IAccommodation {
-  id: string;
-  title: string;
-  description: string;
-  package: Package;
-  itinerary: Itinerary;
-  price: number;
-  image: string;
-  type: string;
-}
 
 export interface IPackageDetailsCity {
   name: string;
@@ -113,7 +83,9 @@ export interface IPackageDetailsItinerary {
   day: number;
   title: string;
   description: string;
-  images: IPackageDetailsImage[];
+  accommodation: string;
+  meals: string;
+  activities: string;
 }
 
 export interface IPackageDetailsImage {

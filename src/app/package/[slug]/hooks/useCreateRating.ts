@@ -44,7 +44,6 @@ export const useAddRatingComment = ({ id }: UseAddReviewRatingProps) => {
         const res = (await postReview({
           url: endpoints.ADD_RATING,
           data: resData,
-          //   invalidateTag: TAGS.REVIEW,
         })) as ApiResponse;
 
         if (res?.error) {

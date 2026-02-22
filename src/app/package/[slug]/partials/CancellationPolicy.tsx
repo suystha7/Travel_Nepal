@@ -54,7 +54,7 @@ const CancellationPolicy: React.FC<IProps> = ({
                   {step.fee}
                 </span>
               </div>
-            ))}
+            ))} 
           </div>
 
           <RichText

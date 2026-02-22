@@ -80,8 +80,6 @@ const PackageOverview: React.FC<IProps> = ({ packageData, orgData }) => {
       component: (
         <Itinerary
           itinerary={packageData?.itinerary}
-          activity={packageData?.activity}
-          meals={packageData?.meals}
         />
       ),
     },

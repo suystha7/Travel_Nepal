@@ -7,7 +7,7 @@ import { ISeoResponse } from "@/interface/seoResponse";
 import { createMetadata } from "@/utils/createMetadata";
 import { getCategories } from "@/core/hooks/useGetCategories";
 import { getPackageData } from "./hooks/useGetPackageData";
-import SpecialOffer from "./partials/SpecialOffer";
+// import SpecialOffer from "./partials/SpecialOffer";
 import { safeFetch } from "@/utils/safeFetch";
 
 export async function generateMetadata() {
@@ -70,7 +70,7 @@ const Page = async ({ searchParams }: PageProps) => {
         perPage={perPage}
       />
 
-      <SpecialOffer />
+      {/* <SpecialOffer /> */}
     </main>
   );
 };

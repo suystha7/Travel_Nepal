@@ -43,7 +43,7 @@ export default function UserDropdown({ sessionData }: UserDropdownProps) {
         </span>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-40" align="end">
+      <DropdownMenuContent className="w-40 mt-6" align="center">
         <DropdownMenuItem asChild>
           <a
             className="typography-large-body font-light text-grey-700 hover:text-grey-600 cursor-pointer"

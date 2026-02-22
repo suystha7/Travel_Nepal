@@ -18,9 +18,9 @@ const Header = async () => {
     );
 
     return (
-      <HeaderClient>
-        <header className="sticky z-50 top-0 left-0 w-full py-2 bg-white">
-          <div className="padding-x flex items-center w-full h-16">
+      <HeaderClient menu={dynamicMenu}>
+        <header className="sticky z-50 top-0 left-0 w-full py-2 bg-white border-b">
+          <div className="padding-x flex items-center justify-between w-full h-16">
             <div className="shrink-0">
               <Link
                 href="/"
@@ -31,14 +31,17 @@ const Header = async () => {
               </Link>
             </div>
 
-            <nav className="flex-1 hidden lg:flex justify-center mx-8">
+            <nav className="hidden lg:flex flex-1 justify-center mx-8">
               <div className="px-6 py-2">
                 <Navbar menu={dynamicMenu} />
               </div>
             </nav>
 
-            <div className="flex items-center px-3 py-1.5">
-              <UserSection />
+            <div className="flex items-center gap-4">
+              <div className="px-3 py-1.5">
+                <UserSection />
+              </div>
+              <div className="w-10 lg:hidden" /> 
             </div>
           </div>
         </header>

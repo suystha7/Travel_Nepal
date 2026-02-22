@@ -65,7 +65,6 @@ export const getStaticData = async <T = any>(
     tags?: string[];
   }
 ): Promise<T> => {
-  // console.log(url);
   const timeout = options?.timeout ?? 30000;
   const timeoutId = setTimeout(() => {}, timeout);
   try {
