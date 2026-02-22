@@ -13,7 +13,7 @@ export function buildDynamicMenu(
 
   const packagesBySlug = packages.reduce(
     (acc, pkg) => {
-      const slug = pkg?.package_type?.slug;
+      const slug = pkg?.package_type;
 
       if (slug) {
         if (!acc[slug]) acc[slug] = [];

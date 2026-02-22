@@ -89,7 +89,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
         </div>
 
         <Link href={`/package/${topDeal.slug}`}>
-          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 min-h-14">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 min-h-14">
             {topDeal.name}
           </h3>
         </Link>

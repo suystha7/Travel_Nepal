@@ -48,7 +48,7 @@ export default function TopTours({ topTours }: TopToursProps) {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <Title
-          label="Top Featured"
+          label="Top 5 Featured"
           primaryText="Your Next"
           highlightText="Destinations"
         />
