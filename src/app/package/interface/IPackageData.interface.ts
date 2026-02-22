@@ -19,7 +19,7 @@ export interface IPackageRecord {
   group_size: string;
   season: string;
   meals: string;
-  package_type: string;
+  package_type: {slug: string; name: string};
   accommodations: string;
   activity_duration: string;
   max_altitude: string;
