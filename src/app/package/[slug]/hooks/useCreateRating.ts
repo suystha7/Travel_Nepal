@@ -12,20 +12,23 @@ import * as Yup from "yup";
 
 interface UseAddReviewRatingProps {
   id: string;
+  userId?: string;
 }
 
-export const useAddRatingComment = ({ id }: UseAddReviewRatingProps) => {
+export const useAddRatingComment = ({ id, userId }: UseAddReviewRatingProps) => {
   const [rating, setRating] = useState(0);
   const [postReview] = usePostDataMutation();
 
   const { data } = useSession();
-  const userId = data?.user?.id || "";
+  const user_id = userId || data?.user?.id || "";
   const formik = useFormik({
     initialValues: {
       comment: "",
     },
     validationSchema: Yup.object({
-      comment: Yup.string().required("Review is required"),
+      comment: Yup.string()
+        .min(10, 'Comment must be at least 10 characters')
+        .required('Please share your thoughts'),
     }),
     onSubmit: async (values, { resetForm }) => {
       if (rating === 0) {
@@ -37,12 +40,12 @@ export const useAddRatingComment = ({ id }: UseAddReviewRatingProps) => {
         rating,
         comment: values.comment,
         package_id: id,
-        user_id: userId,
+        user_id: user_id,
       };
 
-      try {
+      try { 
         const res = (await postReview({
-          url: endpoints.ADD_RATING,
+          url: endpoints.REVIEW.ADD_RATING,
           data: resData,
         })) as ApiResponse;
 

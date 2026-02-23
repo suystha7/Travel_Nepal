@@ -134,7 +134,7 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
                   <motion.button
                     whileHover={{ scale: 1.02, backgroundColor: "#000" }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gray-900 text-white px-8 py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-xl shadow-gray-200"
+                    className="w-full bg-primary-500 text-white px-6 py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all"
                   >
                     Book Now <ChevronRight size={18} />
                   </motion.button>
@@ -144,7 +144,7 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
                   onClick={handleNotLoggedIn}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex-1 bg-gray-900 text-white px-8 py-4 rounded-2xl font-bold text-sm shadow-xl"
+                  className="flex-1 bg-primary-500 text-white px-6 py-4  rounded-xl font-bold text-sm"
                 >
                   Book Now
                 </motion.button>

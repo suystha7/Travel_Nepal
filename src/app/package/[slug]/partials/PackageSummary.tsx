@@ -23,6 +23,7 @@ const PackageSummary: React.FC<IProps> = ({
 
   const tax = currentNumeric * 0.13;
   const grandTotal = currentNumeric + tax;
+  const grandTotalNumeric = Math.floor(grandTotal);
 
   const formatCurrency = (num: number) =>
     `NRP ${num.toLocaleString("en-NP", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -86,7 +87,7 @@ const PackageSummary: React.FC<IProps> = ({
               Total Amount
             </p>
             <p className="text-2xl font-black text-gray-900 tracking-tight">
-              {formatCurrency(grandTotal)}
+              {formatCurrency(grandTotalNumeric)}
             </p>
           </div>
           <div className="text-[10px] text-gray-400 italic mb-1">

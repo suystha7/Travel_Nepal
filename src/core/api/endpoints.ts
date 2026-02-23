@@ -49,7 +49,10 @@ interface IEndpoints {
 
   SUBSCRIBE: string;
 
-  ADD_RATING: string;
+  REVIEW: {
+    ADD_RATING: string;
+    GET_REVIEWS: string;
+  }
 
   BREADCRUMB: {
     HOME: string;
@@ -117,7 +120,10 @@ export const endpoints: IEndpoints = {
 
   SUBSCRIBE: "/subscribe",
 
-  ADD_RATING: "/review",
+  REVIEW: {
+    ADD_RATING: "/review",
+    GET_REVIEWS: "/review/",
+  },
 
   ABOUT: {
     ABOUT_US: "/about-us",
