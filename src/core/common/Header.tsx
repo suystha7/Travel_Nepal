@@ -1,85 +1,61 @@
-"use client"
-import Link from "next/link";
-import Image from "next/image";
-import Navbar from "./Navbar";
-import logo from "@/assest/logo/travel-logo.webp";
-import UserSection from "./UserSection";
-import { getPackageData } from "@/app/package/[slug]/hooks/useGetPackageData";
-import { getCategories } from "../hooks/useGetCategories";
-import { buildDynamicMenu } from "@/constants/dynamicMenus";
-import HeaderClient from "./HeaderClient";
-import { useEffect, useState } from "react";
+'use client';
 
-const ScrollWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import Navbar from './Navbar';
+import logo from '@/assest/logo/travel-logo.webp';
+import UserSection from './UserSection';
+import HeaderClient from './HeaderClient';
+
+const Header = () => {
   const [show, setShow] = useState(true);
-  const [lastScroll, setLastScroll] = useState(0);
+  const lastScrollY = useRef(0);
+
+  const handleScroll = () => {
+    if (window.scrollY > lastScrollY.current) {
+      setShow(false); 
+    } else {
+      setShow(true); 
+    }
+    lastScrollY.current = window.scrollY;
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        setShow(false); // scroll down
-      } else {
-        setShow(true); // scroll up
-      }
-      setLastScroll(currentScroll);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className={`transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"}`}>
-      {children}
-    </div>
-  );
-};
+    <HeaderClient>
+      <header
+        className={`sticky top-0 left-0 w-full py-2 bg-white border-b transition-transform duration-300 z-50 ${
+          show ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className="padding-x flex items-center justify-between w-full h-16">
+          <div className="shrink-0">
+            <Link href="/" aria-label="Homepage" className="flex items-center group">
+              <Image src={logo} alt="logo" className="w-36" priority />
+            </Link>
+          </div>
 
-const Header = async () => {
-  try {
-    const { packageType } = await getCategories();
-    const packageData = await getPackageData();
-    const dynamicMenu = buildDynamicMenu(
-      packageType?.data?.records || [],
-      packageData?.data?.records || []
-    );
-
-    return (
-      <HeaderClient menu={dynamicMenu}>
-        <ScrollWrapper>
-          <header className="sticky z-50 top-0 left-0 w-full py-2 bg-white border-b">
-            <div className="padding-x flex items-center justify-between w-full h-16">
-              <div className="shrink-0">
-                <Link href="/" aria-label="Homepage" className="flex items-center group">
-                  <Image src={logo} alt="logo" className="w-36" priority />
-                </Link>
-              </div>
-
-              <nav className="hidden lg:flex flex-1 justify-center mx-8">
-                <div className="px-6 py-2">
-                  <Navbar menu={dynamicMenu} />
-                </div>
-              </nav>
-
-              <div className="flex items-center gap-4">
-                <div className="px-3 py-1.5">
-                  <UserSection />
-                </div>
-                <div className="w-10 lg:hidden" />
-              </div>
+          <nav className="hidden lg:flex flex-1 justify-center mx-8">
+            <div className="px-6 py-2">
+              <Navbar />
             </div>
-          </header>
-        </ScrollWrapper>
-      </HeaderClient>
-    );
-  } catch (error) {
-    console.error(error);
-    return (
-      <div className="h-20 flex items-center justify-center bg-rose-700 text-white text-[10px] font-black uppercase tracking-[0.2em]">
-        System Navigation Error
-      </div>
-    );
-  }
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <div className="px-3 py-1.5">
+              <UserSection />
+            </div>
+            <div className="w-10 lg:hidden" />
+          </div>
+        </div>
+      </header>
+    </HeaderClient>
+  );
 };
 
 export default Header;

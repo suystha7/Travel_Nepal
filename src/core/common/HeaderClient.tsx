@@ -10,10 +10,9 @@ import logo from "@/assest/logo/travel-logo.webp";
 
 interface HeaderClientProps {
   children: React.ReactNode;
-  menu: any;
 }
 
-const HeaderClient = ({ children, menu }: HeaderClientProps) => {
+const HeaderClient = ({ children }: HeaderClientProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -76,7 +75,6 @@ const HeaderClient = ({ children, menu }: HeaderClientProps) => {
           </div>
           <div className="flex-1 overflow-y-auto py-4">
             <MobileMenuList
-              menu={menu}
               pathname={pathname}
               closeMenu={closeMenu}
             />

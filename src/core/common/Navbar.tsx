@@ -7,20 +7,9 @@ import { ChevronDown, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MobileMenuList } from "./MobileMenu";
 
-interface INavbarProps {
-  menu: {
-    ACTIVITIES: Record<string, { name: string; url: string }[]>;
-  };
-}
-
-// const MENU_TITLES: Record<keyof INavbarProps["menu"], string> = {
-//   ACTIVITIES: "Activities",
-// };
-
-export default function Navbar({ menu }: INavbarProps) {
+export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [activeHover, setActiveHover] = useState<string | null>(null);
 
   const isActive = useCallback((href: string) => pathname === href, [pathname]);
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
@@ -57,71 +46,6 @@ export default function Navbar({ menu }: INavbarProps) {
         <li>{renderNavLink("/", "Home", isActive("/"))}</li>
         <li>{renderNavLink("/about-us", "About Us", isActive("/about-us"))}</li>
         <li>{renderNavLink("/package", "Packages", isActive("/package"))}</li>
-
-        {/* {(Object.keys(menu) as (keyof typeof menu)[]).map((key) => {
-          const hasItems = Object.values(menu[key]).some(
-            (list) => list.length > 0
-          );
-          const isHovered = activeHover === key;
-
-          return (
-            <li
-              key={key}
-              className="relative"
-              onMouseEnter={() => hasItems && setActiveHover(key)}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <div className="flex items-center gap-1 cursor-pointer text-black hover:text-primary-500 transition-colors py-2">
-                <span className="font-medium">{MENU_TITLES[key]}</span>
-                {hasItems && (
-                  <motion.div
-                    animate={{ rotate: isHovered ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                )}
-              </div>
-
-              <AnimatePresence>
-                {isHovered && hasItems && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 p-8 rounded-xl min-w-220 z-50 shadow-xl bg-white border border-gray-100"
-                  >
-                    <div className="grid grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
-                      {Object.entries(menu[key]).map(([category, list]) =>
-                        list.length ? (
-                          <div key={category} className="space-y-3">
-                            <p className="font-bold text-gray-900 text-sm uppercase tracking-wider border-b border-white pb-2">
-                              {category}
-                            </p>
-                            <ul className="flex flex-col gap-2">
-                              {list.map((item) => (
-                                <li key={item?.url}>
-                                  <Link
-                                    href={item.url}
-                                    className="text-gray-600 hover:text-primary-600 transition-colors text-sm block"
-                                  >
-                                    {item?.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ) : null
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </li>
-          );
-        })} */}
-
         <li>{renderNavLink("/faq", "FAQs", isActive("/faq"))}</li>
         <li>
           {renderNavLink("/contact-us", "Contact Us", isActive("/contact-us"))}
@@ -171,11 +95,7 @@ export default function Navbar({ menu }: INavbarProps) {
                   <X className="w-6 h-6 text-gray-900" />
                 </button>
               </div>
-              <MobileMenuList
-                menu={menu}
-                pathname={pathname}
-                closeMenu={closeMenu}
-              />
+              <MobileMenuList pathname={pathname} closeMenu={closeMenu} />
             </motion.div>
           </>
         )}

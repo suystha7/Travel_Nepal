@@ -4,16 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface IMobileMenuListProps {
-  menu?: {
-    [key: string]: any;
-  };
   pathname: string;
   closeMenu: () => void;
   level?: number;
 }
 
 export const MobileMenuList = ({
-  menu = {},
   pathname,
   closeMenu,
   level = 0,
@@ -44,65 +40,6 @@ export const MobileMenuList = ({
   return (
     <ul className="flex flex-col space-y-1 mb-2 overflow-y-auto overscroll-contain max-h-screen">
       {level === 0 && <>{renderLink("Home", "/")}</>}
-
-      {Object.entries(menu || {}).map(([key, value]) => {
-        if (!value) return null;
-
-        if (Array.isArray(value)) {
-          if (value.length === 0) return null;
-          return (
-            <li key={key}>
-              <button
-                onClick={() => toggleGroup(key)}
-                className="flex items-center justify-between w-full px-4 py-3 text-grey-800 hover:bg-grey-50"
-                style={{ paddingLeft: `${level * 16 + 16}px` }}
-              >
-                <span>{key.replace("_TOURS", " Tours")}</span>
-                <ChevronDownIcon
-                  className={`transition-transform ${
-                    openGroups[key] ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {openGroups[key] && (
-                <ul className="ml-2 border-l">
-                  {value.map((item: any) => renderLink(item.name, item.url))}
-                </ul>
-              )}
-            </li>
-          );
-        }
-
-        const open = openGroups[key];
-        const childrenKeys = Object.keys(value || {});
-        if (!childrenKeys.length) return null;
-
-        return (
-          <li key={key}>
-            <button
-              onClick={() => toggleGroup(key)}
-              className="flex items-center justify-between w-full px-4 py-3 text-grey-800 hover:bg-grey-50"
-              style={{ paddingLeft: `${level * 16 + 16}px` }}
-            >
-              <span>{key.replace("_TOURS", " Tours")}</span>
-              <ChevronDownIcon
-                className={`transition-transform ${open ? "rotate-180" : ""}`}
-              />
-            </button>
-
-            {open && (
-              <div className="ml-2 border-l">
-                <MobileMenuList
-                  menu={value}
-                  pathname={pathname}
-                  closeMenu={closeMenu}
-                  level={level + 1}
-                />
-              </div>
-            )}
-          </li>
-        );
-      })}
 
       {level === 0 && (
         <>
