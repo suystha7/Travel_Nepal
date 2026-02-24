@@ -13,9 +13,9 @@ interface INavbarProps {
   };
 }
 
-const MENU_TITLES: Record<keyof INavbarProps["menu"], string> = {
-  ACTIVITIES: "Activities",
-};
+// const MENU_TITLES: Record<keyof INavbarProps["menu"], string> = {
+//   ACTIVITIES: "Activities",
+// };
 
 export default function Navbar({ menu }: INavbarProps) {
   const pathname = usePathname();
@@ -58,7 +58,7 @@ export default function Navbar({ menu }: INavbarProps) {
         <li>{renderNavLink("/about-us", "About Us", isActive("/about-us"))}</li>
         <li>{renderNavLink("/package", "Packages", isActive("/package"))}</li>
 
-        {(Object.keys(menu) as (keyof typeof menu)[]).map((key) => {
+        {/* {(Object.keys(menu) as (keyof typeof menu)[]).map((key) => {
           const hasItems = Object.values(menu[key]).some(
             (list) => list.length > 0
           );
@@ -120,7 +120,7 @@ export default function Navbar({ menu }: INavbarProps) {
               </AnimatePresence>
             </li>
           );
-        })}
+        })} */}
 
         <li>{renderNavLink("/faq", "FAQs", isActive("/faq"))}</li>
         <li>

@@ -11,25 +11,23 @@ export function buildDynamicMenu(
 
   const menu: Menu = { ACTIVITIES: {} };
 
-  const packagesBySlug = packages.reduce(
-    (acc, pkg) => {
-      const slug = pkg?.package_type;
-
-      if (slug) {
-        if (!acc[slug]) acc[slug] = [];
-        acc[slug].push({
-          name: pkg.name,
-          url: `/package/${pkg.slug}`,
-        });
-      }
-      return acc;
-    },
-    {} as Record<string, MenuEntry[]>
-  );
-
+  // Initialize empty arrays for each activity
   packageActivities.forEach((activity) => {
-    if (activity?.name && activity?.slug) {
-      menu.ACTIVITIES[activity.name] = packagesBySlug[activity.slug] || [];
+    if (activity?.name) {
+      menu.ACTIVITIES[activity.name] = [];
+    }
+  });
+
+  // Assign packages to activities based on category
+  packages.forEach((pkg) => {
+    const activity = packageActivities.find(
+      (a) => a.name === pkg.category?.name
+    );
+    if (activity?.name) {
+      menu.ACTIVITIES[activity.name].push({
+        name: pkg.name,
+        url: `/package/${pkg.slug}`,
+      });
     }
   });
 
