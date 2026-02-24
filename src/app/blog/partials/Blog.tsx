@@ -1,9 +1,6 @@
 import React, { memo } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Heart, Eye } from "lucide-react";
 import { IBlogRecord } from "../interface/IBlogInterface";
-import RichText from "@/utils/richText";
 import { BlogCard } from "./BlogCard";
 
 interface BlogProps {

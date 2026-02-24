@@ -3,12 +3,12 @@ import { IApiResponse } from "@/interface/apiResponse";
 export interface IPackageRecord {
   id: string;
   country: { name: string; slug: string };
-  city: string;
+  city: { name: string }[];
   ordering: number;
   name: string;
   slug: string;
   description: string;
-  category: string;
+  category: { id: string; name: string };
   main_image: string;
   current_price: string;
   previous_price: string;
@@ -19,7 +19,7 @@ export interface IPackageRecord {
   group_size: string;
   season: string;
   meals: string;
-  package_type: string;
+  package_type: { name: string };
   accommodations: string;
   activity_duration: string;
   max_altitude: string;

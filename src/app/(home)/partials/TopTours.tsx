@@ -9,20 +9,21 @@ import Link from "next/link";
 import { ArrowUpRight, Calendar, MapPin } from "lucide-react";
 import Title from "@/core/common/Title";
 import world from "@/assest/world.png";
+import PackageImage from "@/assest/heritage.jpg";
 import RichText from "@/utils/richText";
-import { IPackageRecord } from "@/app/package/interface/IPackageData.interface";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import { IPackageDetailsData } from "@/app/package/[slug]/interface/IPackageDetails.interface";
 
 interface TopToursProps {
-  topTours: IPackageRecord[];
+  topTours: IPackageDetailsData[];
 }
 
 export default function TopTours({ topTours }: TopToursProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  
+
   if (!topTours || !topTours.length) return null;
 
   const activePackage = topTours[activeIndex];
@@ -69,23 +70,26 @@ export default function TopTours({ topTours }: TopToursProps) {
                     <Calendar size={16} />
                     <span>Best time to visit</span>
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-black leading-tight text-gray-900">
+                  <h2 className="text-3xl md:text-4xl font-black leading-tight text-gray-900">
                     {activePackage?.name}
                   </h2>
                 </div>
 
-                <div className="text-gray-600 text-lg leading-relaxed border-l-4 border-primary-500 pl-6">
+                <div className="text-gray-600 text-xl leading-relaxed border-l-4 border-primary-500 pl-3">
                   {activePackage?.description ? (
                     <RichText
                       content={activePackage.description}
-                      className="text-gray-600 text-sm leading-relaxed line-clamp-4"
+                      className="text-gray-600 text-base leading-relaxed line-clamp-4"
                     />
                   ) : (
-                    <p>Explore the beauty of nature during this perfect season.</p>
+                    <p></p>
                   )}
                 </div>
 
-                <Link href={`/package/${activePackage?.slug}`} className="inline-block">
+                <Link
+                  href={`/package/${activePackage?.slug}`}
+                  className="inline-block"
+                >
                   <button className="group flex items-center gap-3 bg-secondary-500 text-white px-8 py-4 rounded-full transition-all hover:bg-primary-500 ">
                     <span className="font-bold uppercase text-xs tracking-widest">
                       Explore Now
@@ -119,7 +123,7 @@ export default function TopTours({ topTours }: TopToursProps) {
               }}
               breakpoints={{
                 640: { slidesPerView: 2 },
-                1024: { slidesPerView: 2.2 }
+                1024: { slidesPerView: 2.2 },
               }}
               className="top-tours-swiper overflow-visible!"
             >
@@ -132,17 +136,19 @@ export default function TopTours({ topTours }: TopToursProps) {
                       }`}
                     >
                       <Image
-                        src={tour?.main_image || "/placeholder.png"}
+                        src={tour?.image || PackageImage}
                         alt={tour.name}
                         fill
                         className="object-cover transition-transform duration-1000 hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-                      
+
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-lg text-[10px] font-bold tracking-widest uppercase">
                           <MapPin size={12} />
-                          {Array.isArray(tour?.city) ? tour.city[0] : tour?.city}
+                          {Array.isArray(tour?.city)
+                            ? tour.city.join("")
+                            : tour?.city}
                         </div>
                       </div>
                     </div>

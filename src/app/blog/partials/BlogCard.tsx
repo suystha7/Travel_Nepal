@@ -1,9 +1,9 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Eye, Heart } from "lucide-react";
 import { IBlogRecord } from "../interface/IBlogInterface";
 import RichText from "@/utils/richText";
+import BlogImage from "@/assest/blog1.png"
 
 interface BlogCardProps {
   blog: IBlogRecord;
@@ -16,7 +16,7 @@ export const BlogCard = ({ blog }: BlogCardProps) => (
   >
     <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl">
       <Image
-        src={blog.image}
+        src={blog.image || BlogImage}
         alt={blog.title}
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-110"

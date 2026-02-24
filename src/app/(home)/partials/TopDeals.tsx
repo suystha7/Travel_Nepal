@@ -15,9 +15,10 @@ import RichText from "@/utils/richText";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import { IPackageDetailsData } from "@/app/package/[slug]/interface/IPackageDetails.interface";
 
 interface TopDealsProps {
-  topDeals: IPackageRecord[];
+  topDeals: IPackageDetailsData[];
 }
 
 const containerVariants: Variants = {
@@ -63,14 +64,16 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
 
         <div className="absolute top-4 right-4">
           <div className="bg-primary-500/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-[9px] font-bold uppercase tracking-wider">
-            {topDeal.package_type}
+            {topDeal.package_type?.name}
           </div>
         </div>
 
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
           <p className="text-white text-xs font-medium leading-relaxed line-clamp-2">
             {topDeal.category} • {topDeal.duration} Days in{" "}
-            {Array.isArray(topDeal.city) ? topDeal.city.join(", ") : topDeal.city}
+            {Array.isArray(topDeal.city)
+              ? topDeal.city.join(", ")
+              : topDeal.city}
           </p>
         </div>
       </div>
@@ -79,7 +82,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
         <div className="flex items-center gap-2 text-gray-400 mb-2">
           <MapPin size={12} className="text-primary-500" />
           <span className="text-[10px] font-bold uppercase tracking-wider truncate">
-            {Array.isArray(topDeal.city) ? topDeal.city[0] : topDeal.city}
+            {Array.isArray(topDeal.city) ? topDeal.city.join("") : topDeal.city}
           </span>
           <span className="mx-0.5 opacity-30">•</span>
           <Clock size={12} />
@@ -89,7 +92,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
         </div>
 
         <Link href={`/package/${topDeal.slug}`}>
-          <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 min-h-14">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
             {topDeal.name}
           </h3>
         </Link>
@@ -125,7 +128,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
               className="relative overflow-hidden h-10 px-4 rounded-xl bg-secondary-500 text-white flex items-center justify-center group-hover:bg-primary-600 transition-all duration-300 min-w-25"
             >
               <span className="text-[10px] font-bold uppercase tracking-widest transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                Details
+                View Details
               </span>
               <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
                 <ArrowRight size={18} />
@@ -172,9 +175,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
           className="pb-12 top-deals-swiper"
         >
           {topDeals?.map((topDeal) => (
-            <SwiperSlide key={topDeal.id}>
-              {renderCard(topDeal)}
-            </SwiperSlide>
+            <SwiperSlide key={topDeal.id}>{renderCard(topDeal)}</SwiperSlide>
           ))}
         </Swiper>
       </div>
@@ -186,7 +187,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
         viewport={{ once: true, amount: 0.05 }}
         className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
-        {topDeals?.map((topDeal) => ( 
+        {topDeals?.map((topDeal) => (
           <React.Fragment key={topDeal.id}>
             {renderCard(topDeal)}
           </React.Fragment>

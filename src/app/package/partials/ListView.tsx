@@ -58,14 +58,15 @@ const ListView: React.FC<IProps> = ({ content }) => {
                   href={`/package/${packageItem?.slug}`}
                   className="flex-1 hover:text-primary-600"
                 >
-                  <h2 className="text-xl lg:text-2xl font-bold line-clamp-1">
+                  <h2 className="text-xl lg:text-2xl font-bold line-clamp-2">
                     {packageItem?.name}
                   </h2>
                 </Link>
+                
                 <div className="hidden lg:flex items-center gap-4 text-base">
                   <div className="flex items-center gap-1 text-primary-500 font-medium">
                     <Tag size={16} className="text-primary-500" />
-                    {packageItem?.package_type}
+                    {packageItem?.package_type?.name}
                   </div>
                   <div className="flex items-center gap-1 text-primary-500 font-medium">
                     <Clock size={16} className="text-primary-500" />
