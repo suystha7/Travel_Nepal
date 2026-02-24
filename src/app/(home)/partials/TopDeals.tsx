@@ -15,10 +15,9 @@ import RichText from "@/utils/richText";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { IPackageDetailsData } from "@/app/package/[slug]/interface/IPackageDetails.interface";
 
 interface TopDealsProps {
-  topDeals: IPackageDetailsData[];
+  topDeals: IPackageRecord[];
 }
 
 const containerVariants: Variants = {
@@ -62,20 +61,20 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
           </div>
         </div>
 
-        <div className="absolute top-4 right-4">
+        {/* <div className="absolute top-4 right-4">
           <div className="bg-primary-500/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-[9px] font-bold uppercase tracking-wider">
-            {topDeal.package_type?.name}
+            {topDeal.package_type}
           </div>
-        </div>
+        </div> */}
 
-        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+        {/* <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
           <p className="text-white text-xs font-medium leading-relaxed line-clamp-2">
             {topDeal.category} • {topDeal.duration} Days in{" "}
             {Array.isArray(topDeal.city)
               ? topDeal.city.join(", ")
               : topDeal.city}
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="p-5 flex flex-col h-[calc(100%-16rem)]">
@@ -128,7 +127,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
               className="relative overflow-hidden h-10 px-4 rounded-xl bg-secondary-500 text-white flex items-center justify-center group-hover:bg-primary-600 transition-all duration-300 min-w-25"
             >
               <span className="text-[10px] font-bold uppercase tracking-widest transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4">
-                View Details
+                Details
               </span>
               <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
                 <ArrowRight size={18} />
