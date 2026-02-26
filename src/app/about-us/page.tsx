@@ -13,7 +13,7 @@ const Page = async () => {
       aboutUsHero,
       missionVisionData,
       whyUsData,
-      testimonialsData
+      testimonialsData,
     } = await getAboutUsData();
 
     return (
