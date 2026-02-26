@@ -46,7 +46,7 @@ const Page = async () => {
     );
   } catch (error) {
     console.error("Failed to load About Us page:", error);
-    return (  
+    return (
       <div className="min-h-[60vh] flex items-center justify-center typography-h3-regular text-primary-500 border-t border-b">
         Something went wrong while loading the page.
       </div>
