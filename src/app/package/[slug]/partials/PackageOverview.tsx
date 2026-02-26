@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
-import { useSession } from "next-auth/react";
 import { detailsNav } from "@/data/packageDetailsNav";
 import { IPackageDetailsData } from "../interface/IPackageDetails.interface";
 
@@ -17,41 +16,47 @@ import PackageSidebar from "./PackageSidebar";
 
 interface IProps {
   packageData: IPackageDetailsData;
-  orgData?: any;
-  reviewData?: any;
+  orgData?: unknown;
+  reviewData?: unknown;
 }
 
 const PackageOverview: React.FC<IProps> = ({
   packageData,
   orgData,
-  reviewData,
+  reviewData
 }) => {
   const [activeSection, setActiveSection] = useState<string>("overview");
   const [isVisible, setIsVisible] = useState(false);
   const observer = useRef<IntersectionObserver | null>(null);
-  const { status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 2000);
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+      const isNearBottom = scrollPosition >= pageHeight - 300;
+      setIsVisible(isNearBottom);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = useCallback((e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
-    if (element) {
-      const offset = 100;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: "smooth",
-      });
-    }
+
+    if (!element) return;
+
+    const offset = 100;
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: elementPosition - offset,
+      behavior: "smooth"
+    });
   }, []);
 
   useEffect(() => {
@@ -78,11 +83,11 @@ const PackageOverview: React.FC<IProps> = ({
   const sections = [
     {
       id: "overview",
-      component: <Overview overview={packageData?.itinerary} />,
+      component: <Overview overview={packageData?.itinerary} />
     },
     {
       id: "itinerary",
-      component: <Itinerary itinerary={packageData?.itinerary} />,
+      component: <Itinerary itinerary={packageData?.itinerary} />
     },
     {
       id: "inclusions",
@@ -92,7 +97,7 @@ const PackageOverview: React.FC<IProps> = ({
           exclusions={packageData?.exclusions}
           notices={packageData?.notices}
         />
-      ),
+      )
     },
     {
       id: "cancellationPolicy",
@@ -102,8 +107,8 @@ const PackageOverview: React.FC<IProps> = ({
           cancellationPolicy={packageData?.cancellation_policy}
           termsAndConditions={packageData?.terms_conditions}
         />
-      ),
-    },
+      )
+    }
   ];
 
   return (

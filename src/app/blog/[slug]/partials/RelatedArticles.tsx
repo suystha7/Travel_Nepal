@@ -16,7 +16,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ relatedBlogs }) => {
           Related Blogs
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {relatedBlogs.slice(0, 3).map((blog) => (
+          {relatedBlogs.slice(0, 5).map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
         </div>

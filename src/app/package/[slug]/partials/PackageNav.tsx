@@ -12,7 +12,7 @@ const PackageNav: React.FC<NavProps> = ({
   onScrollToSection,
 }) => {
   return (
-    <div className="sticky top-0 z-30 py-4">
+    <div className="sticky top-0 z-20 py-4">
       <nav className="bg-white border border-gray-200 p-2 flex items-center gap-1 overflow-x-auto no-scrollbar rounded-2xl">
         {detailsNav.map((item) => {
           const sectionId = item.href.replace("#", "");
