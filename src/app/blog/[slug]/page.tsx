@@ -14,7 +14,9 @@ const page = async ({ params }: PageProps) => {
   return (
     <>
       <BlogDetails blogDetailsData={blogDetailsData?.data} />
-      <RelatedArticles relatedBlogs={blogDetailsData?.data?.related_blogs || []} />
+      <RelatedArticles
+        relatedBlogs={blogDetailsData?.data?.related_blogs || []}
+      />
     </>
   );
 };

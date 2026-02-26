@@ -23,7 +23,7 @@ interface IProps {
 const PackageOverview: React.FC<IProps> = ({
   packageData,
   orgData,
-  reviewData
+  reviewData,
 }) => {
   const [activeSection, setActiveSection] = useState<string>("overview");
   const [isVisible, setIsVisible] = useState(false);
@@ -55,7 +55,7 @@ const PackageOverview: React.FC<IProps> = ({
 
     window.scrollTo({
       top: elementPosition - offset,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }, []);
 
@@ -83,11 +83,11 @@ const PackageOverview: React.FC<IProps> = ({
   const sections = [
     {
       id: "overview",
-      component: <Overview overview={packageData?.itinerary} />
+      component: <Overview overview={packageData?.itinerary} />,
     },
     {
       id: "itinerary",
-      component: <Itinerary itinerary={packageData?.itinerary} />
+      component: <Itinerary itinerary={packageData?.itinerary} />,
     },
     {
       id: "inclusions",
@@ -97,7 +97,7 @@ const PackageOverview: React.FC<IProps> = ({
           exclusions={packageData?.exclusions}
           notices={packageData?.notices}
         />
-      )
+      ),
     },
     {
       id: "cancellationPolicy",
@@ -107,8 +107,8 @@ const PackageOverview: React.FC<IProps> = ({
           cancellationPolicy={packageData?.cancellation_policy}
           termsAndConditions={packageData?.terms_conditions}
         />
-      )
-    }
+      ),
+    },
   ];
 
   return (
