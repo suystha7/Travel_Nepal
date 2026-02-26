@@ -1,21 +1,10 @@
-import React from "react";
+import { getAboutUsData } from "./hooks/useGetAboutUsData";
 import AboutHero from "./partials/AboutHero";
 import AboutUsDescription from "./partials/AboutUsDescription";
-import { getAboutUsData } from "./hooks/useGetAboutUsData";
-import { endpoints } from "@/core/api/endpoints";
-import { getStaticData } from "@/core/api/fetch";
-import { ISeoResponse } from "@/interface/seoResponse";
-import { createMetadata } from "@/utils/createMetadata";
-import Stats from "./partials/Stats";
-import WhyUs from "./partials/WhyUs";
 import MissionVision from "./partials/MissionVision";
 import Review from "./partials/Review";
-
-export async function generateMetadata() {
-  const { data } = await getStaticData<ISeoResponse>(endpoints.SEO.ABOUT_US);
-  const seoRecord = data?.records?.[0] ?? null;
-  return createMetadata(seoRecord);
-}
+import Stats from "./partials/Stats";
+import WhyUs from "./partials/WhyUs";
 
 const Page = async () => {
   try {
@@ -24,11 +13,11 @@ const Page = async () => {
       aboutUsHero,
       missionVisionData,
       whyUsData,
-      testimonialsData,
+      testimonialsData
     } = await getAboutUsData();
 
     return (
-      <main>
+      <main className="overflow-x-hidden">
         <AboutHero aboutHero={aboutUsHero?.data?.records ?? []} />
 
         <AboutUsDescription aboutUsData={aboutUsData?.data} />

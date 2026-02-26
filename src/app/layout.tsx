@@ -51,7 +51,7 @@ export default async function RootLayout({
         className={`${openSans.variable} ${quicksand.variable} ${outfit.variable} antialiased bg-white`}
       >
         <Providers session={session}>
-          <div className="h-screen overflow-y-auto">
+          <div className="min-h-screen overflow-x-hidden">
             <Header />
             <div className="grow">{children}</div>
             <Footer />
