@@ -27,10 +27,14 @@ const Footer = async () => {
       getBlogData(),
     ]);
 
-    const categories = results[0].status === "fulfilled" ? results[0].value : null;
-    const homeData = results[1].status === "fulfilled" ? results[1].value : null;
-    const orgResponse = results[2].status === "fulfilled" ? results[2].value : null;
-    const blogResponse = results[3].status === "fulfilled" ? results[3].value : null;
+    const categories =
+      results[0].status === "fulfilled" ? results[0].value : null;
+    const homeData =
+      results[1].status === "fulfilled" ? results[1].value : null;
+    const orgResponse =
+      results[2].status === "fulfilled" ? results[2].value : null;
+    const blogResponse =
+      results[3].status === "fulfilled" ? results[3].value : null;
 
     const packageTypeRecords = categories?.packageType?.data?.records ?? [];
     const blogRecord = blogResponse?.blogs?.data?.records ?? [];
@@ -87,7 +91,8 @@ const Footer = async () => {
                   <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </h4>
                 <p className="text-sm text-white/80 mt-4 mb-6">
-                  Join our community for exclusive travel insights and secret deals.
+                  Join our community for exclusive travel insights and secret
+                  deals.
                 </p>
                 <NewsLetter />
               </div>
@@ -96,10 +101,26 @@ const Footer = async () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-12">
             {[
-              { title: "Activities", data: packageTypeRecords, path: (item: any) => `/package?trip_type=${item?.slug}` },
-              { title: "Latest Blogs", data: blogRecord, path: (item: any) => `/blog/${item?.blog_slug}` },
-              { title: "Featured Packages", data: topDealRecords, path: (item: any) => `/package/${item?.slug}` },
-              { title: "Top Deals", data: topTourRecords, path: (item: any) => `/package/${item?.slug}` },
+              {
+                title: "Activities",
+                data: packageTypeRecords,
+                path: (item: any) => `/package?trip_type=${item?.slug}`,
+              },
+              {
+                title: "Latest Blogs",
+                data: blogRecord,
+                path: (item: any) => `/blog/${item?.blog_slug}`,
+              },
+              {
+                title: "Featured Packages",
+                data: topDealRecords,
+                path: (item: any) => `/package/${item?.slug}`,
+              },
+              {
+                title: "Top Deals",
+                data: topTourRecords,
+                path: (item: any) => `/package/${item?.slug}`,
+              },
             ].map((section, idx) => (
               <div key={idx}>
                 <p className="text-white font-bold text-base uppercase mb-6 relative inline-block group cursor-default">
@@ -113,7 +134,9 @@ const Footer = async () => {
                         href={section.path(item)}
                         className="text-white/90 hover:text-white transition-all text-sm flex items-center gap-1 group/link w-fit"
                       >
-                        <span className="line-clamp-1">{item?.name || item?.title}</span>
+                        <span className="line-clamp-1">
+                          {item?.name || item?.title}
+                        </span>
                         <ArrowUpRight
                           size={14}
                           className="shrink-0 opacity-0 -translate-y-1 translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-y-0 group-hover/link:translate-x-0 transition-all"
@@ -129,7 +152,8 @@ const Footer = async () => {
           <div className="pt-8 border-t border-white/20">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
               <p className="text-xs md:text-sm font-medium text-white/80">
-                © Copyright Travel Nepal Pvt. Ltd. {new Date().getFullYear()} | All rights reser  ved
+                © Copyright Travel Nepal Pvt. Ltd. {new Date().getFullYear()} |
+                All rights reser ved
               </p>
               <p className="text-[10px] text-white/40 uppercase tracking-tighter">
                 Adventure Awaits

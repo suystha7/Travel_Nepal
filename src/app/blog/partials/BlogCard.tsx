@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Eye, Heart } from "lucide-react";
 import { IBlogRecord } from "../interface/IBlogInterface";
 import RichText from "@/utils/richText";
-import BlogImage from "@/assest/blog1.png"
+import BlogImage from "@/assest/blog1.png";
 
 interface BlogCardProps {
   blog: IBlogRecord;

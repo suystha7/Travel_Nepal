@@ -38,7 +38,11 @@ const Header = () => {
       >
         <div className="padding-x flex items-center justify-between w-full h-16">
           <div className="shrink-0">
-            <Link href="/" aria-label="Homepage" className="flex items-center group">
+            <Link
+              href="/"
+              aria-label="Homepage"
+              className="flex items-center group"
+            >
               <Image src={logo} alt="logo" className="w-36" priority />
             </Link>
           </div>

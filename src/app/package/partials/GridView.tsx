@@ -10,7 +10,7 @@ import { IPackageRecord } from "../interface/IPackageData.interface";
 import { useModal } from "@/core/context/ModalContext";
 import { showErrorMessage } from "@/utils/toastMessage/toast.message";
 import RichText from "@/utils/richText";
-import FallbackImg from "@/assest/package1.png"
+import FallbackImg from "@/assest/package1.png";
 
 interface IProps {
   activeTab: string;

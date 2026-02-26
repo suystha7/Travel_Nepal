@@ -23,7 +23,7 @@ const PackageSidebar: React.FC<SidebarProps> = ({
           previousPrice={packageData?.previous_price}
         />
         <PromoCode orgData={orgData?.data} />
-        <Rating packageId={packageData?.id} reviewData={reviewData?.data}/>
+        <Rating packageId={packageData?.id} reviewData={reviewData?.data} />
       </div>
     </aside>
   );

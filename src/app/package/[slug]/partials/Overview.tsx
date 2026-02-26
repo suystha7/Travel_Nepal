@@ -15,7 +15,10 @@ const Overview = ({ overview }: IOverview) => {
     <section className="max-w-7xl mx-auto px-4">
       <div className="relative ml-4 md:ml-8 pl-8 space-y-10 border-l-2 border-dashed border-primary-200">
         {overview.map((dayItem, index) => (
-          <div key={dayItem?.id || index} className="relative group cursor-pointer">
+          <div
+            key={dayItem?.id || index}
+            className="relative group cursor-pointer"
+          >
             <div className="absolute -left-12 md:-left-15 top-0 flex items-center justify-center">
               <div className="bg-white p-1 rounded-full border-2 border-gray-100 group-hover:border-primary-500 transition-colors duration-500">
                 <div className="flex flex-col items-center justify-center bg-gray-50 text-gray-900 rounded-full w-8 h-8 md:w-10 md:h-10 font-bold transition-all duration-500 group-hover:bg-primary-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary-200">

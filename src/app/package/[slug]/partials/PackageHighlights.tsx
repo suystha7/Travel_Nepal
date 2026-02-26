@@ -10,10 +10,7 @@ interface IProps {
   imageGallery?: { image: string }[];
 }
 
-const PackageHighlights = ({
-  highlights = [],
-  imageGallery = [],
-}: IProps) => {
+const PackageHighlights = ({ highlights = [], imageGallery = [] }: IProps) => {
   const [active, setActive] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 

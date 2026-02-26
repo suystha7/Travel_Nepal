@@ -31,14 +31,16 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
           <h2 className="text-5xl font-black text-gray-900 tracking-tight">
             Trip Itinerary
           </h2>
-        
         </div>
-        
+
         <button
           onClick={handleDownloadPdf}
           className="group flex items-center gap-3 bg-primary-700 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:shadow-2xl hover:-trangray-y-1 active:scale-95"
         >
-          <HiOutlineDocumentArrowDown size={22} className="group-hover:animate-bounce" />
+          <HiOutlineDocumentArrowDown
+            size={22}
+            className="group-hover:animate-bounce"
+          />
           <span>Download PDF Guide</span>
         </button>
       </div>
@@ -53,8 +55,8 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
             <div key={day?.id || i} className="relative pl-0 md:pl-14">
               <div
                 className={`hidden md:flex absolute left-0 top-2 w-11 h-11 rounded-full border-2 z-10 items-center justify-center font-bold transition-all duration-500 ${
-                  isOpen 
-                    ? "bg-primary-600 border-primary-600 text-white  shadow-primary-200 scale-110" 
+                  isOpen
+                    ? "bg-primary-600 border-primary-600 text-white  shadow-primary-200 scale-110"
                     : "bg-white border-gray-200 text-gray-400"
                 }`}
               >
@@ -63,8 +65,8 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
 
               <div
                 className={`rounded-xl transition-all duration-500 ${
-                  isOpen 
-                    ? "bg-white border-gray-200" 
+                  isOpen
+                    ? "bg-white border-gray-200"
                     : "bg-gray-100/50 border-transparent hover:border-gray-200"
                 }`}
               >
@@ -73,21 +75,27 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
                   onClick={() => setActiveIndex(isOpen ? null : i)}
                 >
                   <div className="flex flex-col gap-1">
-                    <span className={`md:hidden text-xs font-bold uppercase tracking-tighter ${isOpen ? 'text-primary-600' : 'text-gray-400'}`}>
+                    <span
+                      className={`md:hidden text-xs font-bold uppercase tracking-tighter ${isOpen ? "text-primary-600" : "text-gray-400"}`}
+                    >
                       Day {day?.day}
                     </span>
-                    <h3 className={`text-xl font-bold transition-colors ${isOpen ? "text-gray-900" : "text-gray-500"}`}>
+                    <h3
+                      className={`text-xl font-bold transition-colors ${isOpen ? "text-gray-900" : "text-gray-500"}`}
+                    >
                       {day?.title}
                     </h3>
                   </div>
-                  <ChevronDown 
-                    className={`transition-transform duration-500 text-gray-400 ${isOpen ? "rotate-180 text-primary-600" : ""}`} 
+                  <ChevronDown
+                    className={`transition-transform duration-500 text-gray-400 ${isOpen ? "rotate-180 text-primary-600" : ""}`}
                   />
                 </button>
 
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
                   <div className="overflow-hidden">
@@ -147,7 +155,9 @@ const SectionCard = ({ icon, label, variant, items }: any) => {
   };
 
   return (
-    <div className={`p-6 rounded-2xl border ${styles[variant]} backdrop-blur-sm`}>
+    <div
+      className={`p-6 rounded-2xl border ${styles[variant]} backdrop-blur-sm`}
+    >
       <div className="flex items-center gap-3 mb-5">
         <div className="w-8 h-8 flex items-center justify-center rounded-xl bg-white">
           {icon}

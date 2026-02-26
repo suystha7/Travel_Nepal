@@ -22,7 +22,7 @@ interface WhoWeAreProps {
   stats: {
     total_packages: number;
     year_experience: number;
-  };  
+  };
   testimonialData:
     | {
         records: TestimonialRecord[];
@@ -49,7 +49,7 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
     const extracted = (whoWeAreData?.images || [])
       .map((obj) => obj.image)
       .filter((img) => img && img.trim() !== "");
-    
+
     return extracted.length > 0 ? extracted : DUMMY_IMAGES;
   }, [whoWeAreData?.images]);
 
@@ -87,7 +87,9 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
                       <Globe2 size={24} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Local Expertise</h4>
+                      <h4 className="font-bold text-gray-900">
+                        Local Expertise
+                      </h4>
                       <p className="text-sm text-gray-500 mt-1">
                         Access to 500+ partners across 77 districts.
                       </p>
@@ -99,7 +101,9 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
                       <Compass size={24} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Tailored Paths</h4>
+                      <h4 className="font-bold text-gray-900">
+                        Tailored Paths
+                      </h4>
                       <p className="text-sm text-gray-500 mt-1">
                         Itineraries built for your pace.
                       </p>
@@ -112,19 +116,26 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
             <div className="absolute -bottom-6 -left-6 md:bottom-12 md:-left-12 bg-primary-600 p-8 rounded-3xl text-white shadow-2xl hidden md:block animate-bounce-slow">
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
-                  {(records.length > 0 ? records : [1, 2, 3]).slice(0, 3).map((item, i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-200 overflow-hidden relative"
-                    >
-                      <Image
-                        src={typeof item === 'object' ? (item.image || `https://i.pravatar.cc/100?img=${i + 10}`) : `https://i.pravatar.cc/100?img=${i + 10}`}
-                        alt="User"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
+                  {(records.length > 0 ? records : [1, 2, 3])
+                    .slice(0, 3)
+                    .map((item, i) => (
+                      <div
+                        key={i}
+                        className="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-200 overflow-hidden relative"
+                      >
+                        <Image
+                          src={
+                            typeof item === "object"
+                              ? item.image ||
+                                `https://i.pravatar.cc/100?img=${i + 10}`
+                              : `https://i.pravatar.cc/100?img=${i + 10}`
+                          }
+                          alt="User"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
                 </div>
                 <div>
                   <div className="text-xl font-black">{avgRating}/5</div>
@@ -140,7 +151,10 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
             <h2 className="text-5xl font-black text-gray-900 leading-[1.1] mb-8">
               {whoWeAreData?.title?.split(" ").map((word, index) =>
                 index === 1 ? (
-                  <span key={index} className="text-primary-600"> {word} </span>
+                  <span key={index} className="text-primary-600">
+                    {" "}
+                    {word}{" "}
+                  </span>
                 ) : (
                   <span key={index}>{word} </span>
                 )
@@ -149,7 +163,10 @@ const WhoWeAre = ({ whoWeAreData, stats, testimonialData }: WhoWeAreProps) => {
 
             <div className="relative pl-6 border-l-2 border-primary-200">
               <RichText
-                content={whoWeAreData?.description || "We architect experiences that linger in your memory."}
+                content={
+                  whoWeAreData?.description ||
+                  "We architect experiences that linger in your memory."
+                }
                 className="text-gray-600 text-lg leading-relaxed max-w-xl prose prose-p:mb-4"
               />
             </div>

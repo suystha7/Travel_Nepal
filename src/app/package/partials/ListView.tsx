@@ -9,7 +9,7 @@ import { IPackageRecord } from "../interface/IPackageData.interface";
 import { useModal } from "@/core/context/ModalContext";
 import { showErrorMessage } from "@/utils/toastMessage/toast.message";
 import RichText from "@/utils/richText";
-import FallbackImg from "@/assest/package1.png"
+import FallbackImg from "@/assest/package1.png";
 
 interface IProps {
   activeTab: string;
@@ -46,8 +46,8 @@ const ListView: React.FC<IProps> = ({ content }) => {
             <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-2xl text-xs font-bold tracking-wide z-10">
               <MapPin size={14} className="text-white" />
               {Array.isArray(packageItem?.city)
-                  ? packageItem.city.join(", ")
-                  : packageItem?.city}
+                ? packageItem.city.join(", ")
+                : packageItem?.city}
             </div>
           </div>
 
@@ -62,7 +62,7 @@ const ListView: React.FC<IProps> = ({ content }) => {
                     {packageItem?.name}
                   </h2>
                 </Link>
-                
+
                 <div className="hidden lg:flex items-center gap-4 text-base">
                   <div className="flex items-center gap-1 text-primary-500 font-medium">
                     <Tag size={16} className="text-primary-500" />

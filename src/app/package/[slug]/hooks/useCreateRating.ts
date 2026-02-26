@@ -15,7 +15,10 @@ interface UseAddReviewRatingProps {
   userId?: string;
 }
 
-export const useAddRatingComment = ({ id, userId }: UseAddReviewRatingProps) => {
+export const useAddRatingComment = ({
+  id,
+  userId,
+}: UseAddReviewRatingProps) => {
   const [rating, setRating] = useState(0);
   const [postReview] = usePostDataMutation();
 
@@ -27,8 +30,8 @@ export const useAddRatingComment = ({ id, userId }: UseAddReviewRatingProps) => 
     },
     validationSchema: Yup.object({
       comment: Yup.string()
-        .min(10, 'Comment must be at least 10 characters')
-        .required('Please share your thoughts'),
+        .min(10, "Comment must be at least 10 characters")
+        .required("Please share your thoughts"),
     }),
     onSubmit: async (values, { resetForm }) => {
       if (rating === 0) {
@@ -43,7 +46,7 @@ export const useAddRatingComment = ({ id, userId }: UseAddReviewRatingProps) => 
         user_id: user_id,
       };
 
-      try { 
+      try {
         const res = (await postReview({
           url: endpoints.REVIEW.ADD_RATING,
           data: resData,

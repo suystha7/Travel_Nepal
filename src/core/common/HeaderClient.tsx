@@ -36,8 +36,8 @@ const HeaderClient = ({ children }: HeaderClientProps) => {
         <button
           onClick={toggleMenu}
           className={`lg:hidden fixed top-5 right-4 z-60 p-2 rounded-full transition-all duration-300 ${
-            isOpen || isScrolled 
-              ? "bg-white text-primary-500 shadow-sm" 
+            isOpen || isScrolled
+              ? "bg-white text-primary-500 shadow-sm"
               : "bg-transparent text-primary-500"
           }`}
           aria-label="Toggle Menu"
@@ -60,24 +60,17 @@ const HeaderClient = ({ children }: HeaderClientProps) => {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center h-20 px-6 border-b border-gray-100">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="flex items-center"
-            >
-              <Image 
-                src={logo} 
-                alt="Logo" 
-                className="w-32 h-auto object-contain" 
-                priority 
+            <Link href="/" onClick={closeMenu} className="flex items-center">
+              <Image
+                src={logo}
+                alt="Logo"
+                className="w-32 h-auto object-contain"
+                priority
               />
             </Link>
           </div>
           <div className="flex-1 overflow-y-auto py-4">
-            <MobileMenuList
-              pathname={pathname}
-              closeMenu={closeMenu}
-            />
+            <MobileMenuList pathname={pathname} closeMenu={closeMenu} />
           </div>
         </div>
       </aside>

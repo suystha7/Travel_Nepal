@@ -16,7 +16,7 @@ const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const packageDetailsData = await getStaticData(`/package/${slug}`);
   const { orgData } = await getOrgData();
-  const {getReviews} = await getReviewData();
+  const { getReviews } = await getReviewData();
 
   const relatedPackages = packageDetailsData?.data?.related_package
     ? [packageDetailsData.data.related_package]

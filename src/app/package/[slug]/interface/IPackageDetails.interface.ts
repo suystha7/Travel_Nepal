@@ -34,7 +34,6 @@ export interface IPackageDetailsData {
   is_top_deals: boolean;
 }
 
-
 export interface IPackageDetailsCity {
   name: string;
 }

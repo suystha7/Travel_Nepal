@@ -52,7 +52,7 @@ interface IEndpoints {
   REVIEW: {
     ADD_RATING: string;
     GET_REVIEWS: string;
-  }
+  };
 
   BREADCRUMB: {
     HOME: string;

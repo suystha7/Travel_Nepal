@@ -70,7 +70,6 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
     >
       <div className="bg-white border border-gray-200 rounded-3xl p-2 shadow-2xl shadow-gray-200/50 overflow-hidden">
         <div className="flex flex-col lg:flex-row items-center gap-8 p-5 lg:p-8">
-          
           <div className="flex-1 space-y-8 w-full">
             <div className="flex flex-wrap gap-2.5">
               <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[11px] font-bold tracking-wide border border-blue-100/50">
@@ -88,10 +87,12 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
             </div>
 
             <div className="space-y-3">
-              <p className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">Highlights & Activities</p>
+              <p className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
+                Highlights & Activities
+              </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-3">
                 {activities.map((title, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     whileHover={{ x: 3 }}
                     className="flex items-center gap-2 group cursor-pointer"
@@ -127,10 +128,7 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
 
             <div className="flex items-center gap-3 w-full">
               {isLoggedIn ? (
-                <Link
-                  href={`/user/book/${packageData?.id}`}
-                  className="flex-1"
-                >
+                <Link href={`/user/book/${packageData?.id}`} className="flex-1">
                   <motion.button
                     whileHover={{ scale: 1.02, backgroundColor: "#000" }}
                     whileTap={{ scale: 0.98 }}

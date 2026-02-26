@@ -15,11 +15,7 @@ interface IProps {
   notices: IPackageNotice[];
 }
 
-const ColumnHeader = ({
-  title,
-}: {
-  title: string;
-}) => (
+const ColumnHeader = ({ title }: { title: string }) => (
   <div className="flex items-center mb-6">
     <h3 className="text-xl font-bold text-gray-900">{title}</h3>
   </div>
@@ -37,9 +33,7 @@ const Inclusions: React.FC<IProps> = ({ inclusions, exclusions, notices }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <div className="bg-tertiary-50/50 rounded-3xl p-8 border border-tertiary-100 hover:border-tertiary-200 transition-all duration-300 group">
-            <ColumnHeader
-              title="Good to Know"
-            />
+            <ColumnHeader title="Good to Know" />
             <ul className="space-y-5">
               {notices?.map((item, index) => (
                 <li key={index} className="flex gap-3">
@@ -57,9 +51,7 @@ const Inclusions: React.FC<IProps> = ({ inclusions, exclusions, notices }) => {
           </div>
 
           <div className="bg-primary-50/50 rounded-3xl p-8 border border-primary-100 hover:border-primary-300 transition-all duration-300 group shadow-sm">
-            <ColumnHeader
-              title="What's Included"
-            />
+            <ColumnHeader title="What's Included" />
             <ul className="space-y-5">
               {inclusions?.map((item, index) => (
                 <li key={index} className="flex gap-3">
@@ -77,9 +69,7 @@ const Inclusions: React.FC<IProps> = ({ inclusions, exclusions, notices }) => {
           </div>
 
           <div className="bg-rose-50/50 rounded-3xl p-8 border border-rose-100 hover:border-rose-300 transition-all duration-300 group shadow-sm">
-            <ColumnHeader
-              title="What's Excluded"
-            />
+            <ColumnHeader title="What's Excluded" />
             <ul className="space-y-5">
               {exclusions?.map((item, index) => (
                 <li key={index} className="flex gap-3">
