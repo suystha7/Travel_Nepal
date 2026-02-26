@@ -6,9 +6,14 @@ import Rating from "./Rating";
 interface SidebarProps {
   packageData: any;
   orgData: any;
+  reviewData: any;
 }
 
-const PackageSidebar: React.FC<SidebarProps> = ({ packageData, orgData }) => {
+const PackageSidebar: React.FC<SidebarProps> = ({
+  packageData,
+  orgData,
+  reviewData,
+}) => {
   return (
     <aside className="w-full lg:w-80 shrink-0">
       <div className="lg:sticky lg:top-20 space-y-6">
@@ -18,7 +23,7 @@ const PackageSidebar: React.FC<SidebarProps> = ({ packageData, orgData }) => {
           previousPrice={packageData?.previous_price}
         />
         <PromoCode orgData={orgData?.data} />
-        <Rating packageId={packageData?.id} />
+        <Rating packageId={packageData?.id} reviewData={reviewData?.data}/>
       </div>
     </aside>
   );

@@ -51,7 +51,7 @@ export default async function RootLayout({
         className={`${openSans.variable} ${quicksand.variable} ${outfit.variable} antialiased bg-white`}
       >
         <Providers session={session}>
-          <div className="flex flex-col min-h-screen">
+          <div className="h-screen overflow-y-auto">
             <Header />
             <div className="grow">{children}</div>
             <Footer />

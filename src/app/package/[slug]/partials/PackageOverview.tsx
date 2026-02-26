@@ -18,9 +18,14 @@ import PackageSidebar from "./PackageSidebar";
 interface IProps {
   packageData: IPackageDetailsData;
   orgData?: any;
+  reviewData?: any;
 }
 
-const PackageOverview: React.FC<IProps> = ({ packageData, orgData }) => {
+const PackageOverview: React.FC<IProps> = ({
+  packageData,
+  orgData,
+  reviewData,
+}) => {
   const [activeSection, setActiveSection] = useState<string>("overview");
   const [isVisible, setIsVisible] = useState(false);
   const observer = useRef<IntersectionObserver | null>(null);
@@ -77,11 +82,7 @@ const PackageOverview: React.FC<IProps> = ({ packageData, orgData }) => {
     },
     {
       id: "itinerary",
-      component: (
-        <Itinerary
-          itinerary={packageData?.itinerary}
-        />
-      ),
+      component: <Itinerary itinerary={packageData?.itinerary} />,
     },
     {
       id: "inclusions",
@@ -116,7 +117,11 @@ const PackageOverview: React.FC<IProps> = ({ packageData, orgData }) => {
           <PackageSections sections={sections} />
         </div>
 
-        <PackageSidebar packageData={packageData} orgData={orgData} />
+        <PackageSidebar
+          packageData={packageData}
+          orgData={orgData}
+          reviewData={reviewData}
+        />
       </div>
 
       <AnimatePresence>

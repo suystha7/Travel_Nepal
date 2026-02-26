@@ -122,7 +122,7 @@ export const endpoints: IEndpoints = {
 
   REVIEW: {
     ADD_RATING: "/review",
-    GET_REVIEWS: "/review/",
+    GET_REVIEWS: "/review",
   },
 
   ABOUT: {

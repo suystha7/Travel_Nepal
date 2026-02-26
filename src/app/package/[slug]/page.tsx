@@ -6,6 +6,7 @@ import { getStaticData } from "@/core/api/fetch";
 import HeroSection from "./partials/HeroSection";
 import { getOrgData } from "@/core/hooks/useGetOrgData";
 import RelatedPackage from "./partials/RelatedPackage";
+import { getReviewData } from "./hooks/useGetRating";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -15,6 +16,7 @@ const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const packageDetailsData = await getStaticData(`/package/${slug}`);
   const { orgData } = await getOrgData();
+  const {getReviews} = await getReviewData();
 
   const relatedPackages = packageDetailsData?.data?.related_package
     ? [packageDetailsData.data.related_package]
@@ -43,6 +45,7 @@ const Page = async ({ params }: PageProps) => {
             <PackageOverview
               packageData={packageDetailsData?.data}
               orgData={orgData}
+              reviewData={getReviews}
             />
           </div>
         </div>

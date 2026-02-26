@@ -1,37 +1,40 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import Navbar from './Navbar';
-import logo from '@/assest/logo/travel-logo.webp';
-import UserSection from './UserSection';
-import HeaderClient from './HeaderClient';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Navbar from "./Navbar";
+import logo from "@/assest/logo/travel-logo.webp";
+import UserSection from "./UserSection";
+import HeaderClient from "./HeaderClient";
+import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 
 const Header = () => {
-  const [show, setShow] = useState(true);
-  const lastScrollY = useRef(0);
+  const { scrollY } = useScroll();
+  const [isVisible, setIsVisible] = useState(true);
 
-  const handleScroll = () => {
-    if (window.scrollY > lastScrollY.current) {
-      setShow(false); 
-    } else {
-      setShow(true); 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? latest;
+
+    if (latest < 80) {
+      setIsVisible(true);
+      return;
     }
-    lastScrollY.current = window.scrollY;
-  };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (latest > previous) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  });
 
   return (
     <HeaderClient>
-      <header
-        className={`sticky top-0 left-0 w-full py-2 bg-white border-b transition-transform duration-300 z-50 ${
-          show ? 'translate-y-0' : '-translate-y-full'
-        }`}
+      <motion.header
+        initial={{ y: 0 }}
+        animate={{ y: isVisible ? 0 : "-100%" }}
+        transition={{ duration: 0.3 }}
+        className="sticky top-0 left-0 right-0 z-50 w-full bg-white border-b h-20 flex items-center"
       >
         <div className="padding-x flex items-center justify-between w-full h-16">
           <div className="shrink-0">
@@ -53,7 +56,7 @@ const Header = () => {
             <div className="w-10 lg:hidden" />
           </div>
         </div>
-      </header>
+      </motion.header>
     </HeaderClient>
   );
 };
