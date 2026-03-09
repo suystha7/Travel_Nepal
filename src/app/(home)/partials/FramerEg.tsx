@@ -69,7 +69,7 @@ export default function PackageDescription() {
                       Mount Everest
                     </h3>
                     <p className="absolute bottom-5 left-26 font-semibold typography-large-body-regular -translate-x-1/2 text-white px-3 py-1">
-                      Starting: NPR 133,333
+                      Starting: AUD 133,333
                     </p>
                   </figcaption>
                 )}

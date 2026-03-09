@@ -26,7 +26,7 @@ const PackageSummary: React.FC<IProps> = ({
   const grandTotalNumeric = Math.floor(grandTotal);
 
   const formatCurrency = (num: number) =>
-    `NRP ${num.toLocaleString("en-NP", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    `AUD ${num.toLocaleString("en-NP", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">

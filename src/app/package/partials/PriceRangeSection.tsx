@@ -74,7 +74,7 @@ const PriceRangeSection = ({ tripTypes, duration }: Props) => {
               Budget Range
             </label>
             <span className="text-sm font-bold text-primary-600">
-              Rs.{values[0]} — Rs.{values[1]}
+              ${values[0]} — ${values[1]}
             </span>
           </div>
           <div className="px-2 pt-5">

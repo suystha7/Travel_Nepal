@@ -111,24 +111,25 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
 
           <div className="hidden lg:block w-px h-32 bg-linear-to-b from-tertiary-500 via-secondary-300 to-tertiary-500" />
 
-          <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col items-center lg:items-end gap-6 min-w-70">
+          <div className="w-full lg:w-auto flex flex-col items-center lg:items-end gap-6 min-w-70">
             <div className="text-center lg:text-right">
               <div className="flex items-baseline justify-center lg:justify-end gap-1.5">
-                <span className="text-sm font-bold text-gray-400">NRP</span>
+                <span className="text-sm font-bold text-gray-400">AUD</span>
                 <span className="text-4xl font-black text-gray-900 tracking-tight">
                   {packageData?.current_price?.toLocaleString()}
                 </span>
               </div>
               {packageData?.previous_price && (
                 <p className="text-xs font-bold text-red-400 line-through mt-0.5">
-                  NRP {packageData?.previous_price?.toLocaleString()}
+                  AUD {packageData?.previous_price?.toLocaleString()}
                 </p>
               )}
             </div>
 
-            <div className="flex items-center gap-3 w-full">
+            {/* This wrapper ensures button stays at the bottom */}
+            <div className="mt-auto w-full">
               {isLoggedIn ? (
-                <Link href={`/user/book/${packageData?.id}`} className="flex-1">
+                <Link href={`/user/book/${packageData?.id}`} className="w-full">
                   <motion.button
                     whileHover={{ scale: 1.02, backgroundColor: "#000" }}
                     whileTap={{ scale: 0.98 }}
@@ -142,28 +143,11 @@ const BookNowSection: React.FC<IProps> = ({ packageData, orgData }) => {
                   onClick={handleNotLoggedIn}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex-1 bg-primary-500 text-white px-6 py-4  rounded-xl font-bold text-sm"
+                  className="w-full bg-primary-500 text-white px-6 py-4 rounded-xl font-bold text-sm"
                 >
                   Book Now
                 </motion.button>
               )}
-
-              <div className="flex gap-2">
-                <motion.a
-                  href={`tel:${orgData?.phone}`}
-                  whileHover={{ y: -3, backgroundColor: "#f9fafb" }}
-                  className="p-4 bg-white border border-gray-200 rounded-2xl text-gray-600 transition-all shadow-sm"
-                >
-                  <Phone size={20} />
-                </motion.a>
-                <motion.a
-                  href={`https://wa.me/${orgData?.phone}`}
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  className="p-4 bg-[#25D366] text-white rounded-2xl transition-all shadow-lg shadow-green-100"
-                >
-                  <FaWhatsapp size={20} />
-                </motion.a>
-              </div>
             </div>
           </div>
         </div>

@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
 import ExtendedMultiStepForm from "./ExtendedMultiStepForm";
-import Step1Form from "./Step1Form";
-import Step2Form from "./Step2Form";
 import ProgressBar from "./ProgressBar";
 import TicketOverview from "./TicketOverview";
-import Step3Form from "./Step3Form";
-import { BookingValidationSchemaType } from "./bookingValidationSchema";
-import useCreateBooking from "./useCreateBooking";
+import { BookingValidationSchemaType } from "../schema/bookingValidationSchema";
+import useCreateBooking from "../hooks/useCreateBooking";
+import Step1Form from "./Step1Form";
+import Step2Form from "./Step2Form";
+import { ITicketOverviewProps } from "../interface/IBooking";
 
-const BookingForm = () => {
+const BookingForm: React.FC<ITicketOverviewProps> = ({ booking }) => {
   const [step, setStep] = React.useState(0);
   const [selectedMethod, setSelectedMethod] = React.useState("cod");
   const createBooking = useCreateBooking({ step, setStep });
@@ -20,15 +20,11 @@ const BookingForm = () => {
         currentStep={step}
         steps={[
           {
-            id: "basic_details",
-            title: "Booking Details",
-          },
-          {
-            id: "skill_and_education",
+            id: "your_details",
             title: "Your Details",
           },
           {
-            id: "documents",
+            id: "payment",
             title: "Payment",
           },
         ]}
@@ -44,17 +40,12 @@ const BookingForm = () => {
             steps={[
               {
                 content: <Step1Form />,
-                id: "basic_details",
-                title: "Booking Details",
-              },
-              {
-                content: <Step2Form />,
                 id: "your_details",
                 title: "Your Details",
               },
               {
                 content: (
-                  <Step3Form
+                  <Step2Form
                     selectedMethod={selectedMethod}
                     setSelectedMethod={setSelectedMethod}
                   />
@@ -66,7 +57,7 @@ const BookingForm = () => {
           />
         </div>
         <div className="w-1/2 ml-5">
-          <TicketOverview />
+          <TicketOverview booking={booking}/>
         </div>
       </div>
     </>

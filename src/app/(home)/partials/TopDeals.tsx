@@ -116,7 +116,7 @@ const TopDeals = ({ topDeals }: TopDealsProps) => {
             </p>
             <div className="flex items-baseline gap-1">
               <span className="text-lg font-black text-primary-500">
-                Rs. {Number(topDeal.current_price).toLocaleString()}
+                $ {Number(topDeal.current_price).toLocaleString()}
               </span>
             </div>
           </div>

@@ -130,13 +130,13 @@ const RelatedPackage: React.FC<RelatedPackageProps> = ({
                     <div className="flex items-baseline gap-1.5">
                       <div className="flex items-baseline gap-1">
                         <span className="text-2xl font-black text-primary-900">
-                          NPR {pkg.current_price}
+                          AUD {pkg.current_price}
                         </span>
                       </div>
                     </div>
                     {pkg.previous_price && (
                       <span className="text-xs text-gray-400 line-through">
-                        Rs. {Number(pkg.previous_price).toLocaleString()}
+                        $ {Number(pkg.previous_price).toLocaleString()}
                       </span>
                     )}
                   </div>

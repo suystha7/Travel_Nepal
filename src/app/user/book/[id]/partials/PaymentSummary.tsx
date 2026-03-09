@@ -18,7 +18,7 @@ const discount = 100;
 const total = shippingFee - discount;
 
 const PaymentSummarySection = () => {
-  const formatPrice = (value: number) => `Rs.${value.toLocaleString("en-IN")}`;
+  const formatPrice = (value: number) => `$${value.toLocaleString("en-IN")}`;
 
   return (
     <div className="mt-8">

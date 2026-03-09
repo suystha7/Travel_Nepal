@@ -148,7 +148,7 @@ const Page = () => {
                       </td>
 
                       <td className="px-4 py-4 typography-large-body text-grey-900">
-                        Rs. {order.price}
+                        $ {order.price}
                       </td>
 
                       <td className="px-4 py-4 typography-large-body text-grey-900">

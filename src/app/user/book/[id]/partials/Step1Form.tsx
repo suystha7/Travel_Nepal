@@ -1,64 +1,144 @@
-import React from "react";
+import React from "react"
+import { useFormikContext, getIn } from "formik"
+import { BookingValidationSchemaType } from "../schema/bookingValidationSchema"
 
-const ageGroup = [
-  { label: "Adult (18+)", value: "adult", price: 6000 },
-  {
-    label: "Child (5-17)",
-    value: "child",
-    price: 2000,
-    description: ["With valid ID", "Only in combination with: Adult (18+)"],
-  },
-  {
-    label: "Infant (0-4)",
-    value: "infant",
-    price: "Free",
-    description: ["Only in combination with: Adult (18+)"],
-  },
-  {
-    label: "Room",
-    value: "room",
-    price: 15000,
-    description: ["Only in combination with: Adult (18+)"],
-  },
-];
+type InputProps = {
+  name: string
+  label: string
+  type: string
+}
+
+const InputField = ({ name, label, type }: InputProps) => {
+  const { handleChange, handleBlur, values, errors, touched } =
+    useFormikContext<BookingValidationSchemaType>()
+
+  const error = getIn(errors, name)
+  const isTouched = getIn(touched, name)
+  const value = getIn(values, name)
+
+  return (
+    <div className="flex flex-col gap-1">
+      <div className="relative border-b-2 border-gray-200 focus-within:border-primary-500 transition-all">
+        <input
+          id={name}
+          name={name}
+          type={type}
+          value={value || ""}
+          placeholder=" "
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="peer w-full bg-transparent pt-6 pb-2 text-gray-900 outline-none placeholder-transparent"
+        />
+
+        <label
+          htmlFor={name}
+          className="absolute left-0 top-6 text-gray-400 font-medium transition-all pointer-events-none
+          peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary-500
+          peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-xs"
+        >
+          {label}
+        </label>
+      </div>
+
+      {isTouched && error && (
+        <span className="text-sm text-red-500">{error}</span>
+      )}
+    </div>
+  )
+}
 
 const Step1Form = () => {
+  const { values } = useFormikContext<BookingValidationSchemaType>()
+
   return (
-    <div className="">
-      <h2 className="typography-sub-h2-medium text-grey-800">
-        Booking Details
+    <div className="space-y-10">
+      <h2 className="typography-sub-h2-medium text-grey-800 pb-5">
+        Traveller Details
       </h2>
 
-      <p className="typography-extra-large-body py-5">Select Your Tickets</p>
-      <div className="typography-mid-body font-light bg-grey-50 text-grey-600 px-5 py-3 rounded-xl">
-        <ul className="list-disc list-inside space-y-2">
-          <li>Free for kids under 6 and disabled visitors (74%+) </li>
-          <li>
-            Pregnant women, families with strollers, and visitors on crutches
-            can buy priority tickets at the venue
-          </li>
-        </ul>
-      </div>
-      {ageGroup.map(({ label, value, price, description }) => (
-        <div key={value} className="flex flex-row justify-between my-8">
-          <div className="typography-extra-large-body">
-            <p className=" text-grey-700 mb-3">{label}</p>
-            {description && (
-              <ul className="typography-mid-body font-light text-grey-400 list-disc list-inside space-y-1">
-                {description.map((desc, index) => (
-                  <li key={index}>{desc}</li>
-                ))}
-              </ul>
-            )}
-            <p className="text-yellow-500">NRP {price}</p>
-          </div>
+      {values.adults.map((_, index) => (
+        <div key={index} className="space-y-6">
+          <h3 className="text-lg font-semibold text-gray-700">
+            Adult {index + 1}
+          </h3>
 
-          {/* <div>increment /decrement button</div> */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <InputField
+              name={`adults[${index}].first_name`}
+              label="First Name"
+              type="text"
+            />
+
+            <InputField
+              name={`adults[${index}].last_name`}
+              label="Last Name"
+              type="text"
+            />
+
+            <InputField
+              name={`adults[${index}].email`}
+              label="Email Address"
+              type="email"
+            />
+
+            <InputField
+              name={`adults[${index}].phone`}
+              label="Phone Number"
+              type="tel"
+            />
+
+            <InputField
+              name={`adults[${index}].passport_number`}
+              label="Passport Number"
+              type="text"
+            />
+
+            <InputField
+              name={`adults[${index}].nationality`}
+              label="Nationality"
+              type="text"
+            />
+          </div>
         </div>
       ))}
-    </div>
-    // </div>
-  );
-};
 
-export default Step1Form;
+      {values.children?.length > 0 && (
+        <div className="space-y-6">
+          <h2 className="typography-sub-h2-medium text-grey-800">
+            Children Details
+          </h2>
+
+          {values.children.map((_, index) => (
+            <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <InputField
+                name={`children[${index}].first_name`}
+                label="First Name"
+                type="text"
+              />
+
+              <InputField
+                name={`children[${index}].last_name`}
+                label="Last Name"
+                type="text"
+              />
+
+              <InputField
+                name={`children[${index}].date_of_birth`}
+                label="Date of Birth"
+                type="date"
+              />
+
+              <InputField
+                name={`children[${index}].nationality`}
+                label="Nationality"
+                type="text"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default Step1Form

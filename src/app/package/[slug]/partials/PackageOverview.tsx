@@ -26,7 +26,7 @@ const PackageOverview: React.FC<IProps> = ({
   reviewData,
 }) => {
   const [activeSection, setActiveSection] = useState<string>("overview");
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const PackageOverview: React.FC<IProps> = ({
   const sections = [
     {
       id: "overview",
-      component: <Overview overview={packageData?.itinerary} />,
+      component: <Overview overview={packageData?.itinerary} packageData={packageData?.description}/>,
     },
     {
       id: "itinerary",
@@ -114,7 +114,7 @@ const PackageOverview: React.FC<IProps> = ({
   return (
     <div className="relative min-h-screen">
       <div className="flex flex-col lg:flex-row gap-10 pb-5">
-        <div className="flex-1 flex flex-col gap-10">
+        <div className="flex-1 flex flex-col gap-6">
           <PackageNav
             activeSection={activeSection}
             onScrollToSection={scrollToSection}

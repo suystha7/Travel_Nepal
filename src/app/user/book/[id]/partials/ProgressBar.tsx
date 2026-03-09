@@ -8,8 +8,8 @@ interface ProgressBarProps {
 const ProgressBar = ({ currentStep, steps }: ProgressBarProps) => {
   return (
     <div>
-      <div className="mb-8">
-        <div className="flex items-center justify-between px-[20rem]">
+      <div className="mb-10">
+        <div className="flex items-center justify-between mx-auto max-w-xl">
           {steps.map((step, index) => (
             <div
               key={step.id}
@@ -43,7 +43,7 @@ const ProgressBar = ({ currentStep, steps }: ProgressBarProps) => {
               {index < steps.length - 1 && (
                 <div
                   className={cn(
-                    "flex-1 h-[3px] transition-colors duration-200",
+                    "flex-1 h-1.5 transition-colors duration-200",
                     index < currentStep ? "bg-yellow-400" : "bg-gray-200"
                   )}
                 />

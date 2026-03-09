@@ -88,12 +88,12 @@ const ListView: React.FC<IProps> = ({ content }) => {
                     </span>
                     <div className="flex items-baseline gap-1">
                       <span className="text-2xl font-black text-primary-900">
-                        NPR {packageItem?.current_price}
+                        AUD {packageItem?.current_price}
                       </span>
                     </div>
                     {packageItem?.previous_price && (
                       <span className="text-xs text-gray-400 line-through">
-                        Rs.{" "}
+                        ${" "}
                         {Number(packageItem?.previous_price).toLocaleString()}
                       </span>
                     )}

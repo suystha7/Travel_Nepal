@@ -54,6 +54,11 @@ interface IEndpoints {
     GET_REVIEWS: string;
   };
 
+  BOOKING: {
+    CREATE: string;
+    GET: string;
+  };
+
   BREADCRUMB: {
     HOME: string;
     PACKAGE: string;
@@ -106,6 +111,11 @@ export const endpoints: IEndpoints = {
   BLOG: {
     LIST: "/blog",
     DETAILS: "/blog/detail/",
+  },
+
+  BOOKING: {
+    CREATE: "/package/book",
+    GET: "/package/book",
   },
 
   PACKAGE: {

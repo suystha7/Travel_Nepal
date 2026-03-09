@@ -38,13 +38,13 @@ const PackageFooter = ({ price }: { price: string }) => {
     <div className="sticky bottom-4 z-20 bg-white flex items-center justify-between py-4 max-w-2xl mx-auto px-8 rounded-xl border border-gray-200">
       <div className="flex flex-col">
         <div className="flex items-baseline gap-1 font-bold">
-          <span className="text-base font-bold text-gray-500">NPR</span>
+          <span className="text-base font-bold text-gray-500">AUD</span>
           <span className="font-black text-gray-900 text-3xl">
             {formatCurrency(parseFloat(totalPrice.replace(/,/g, "")))}
           </span>
         </div>
         <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-          Inc. 13% VAT (NPR{" "}
+          Inc. 13% VAT (AUD{" "}
           {formatCurrency(parseFloat(taxAmount.replace(/,/g, "")))})
         </p>
       </div>

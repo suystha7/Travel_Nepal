@@ -157,7 +157,7 @@ const PdfGenerator = ({ data }: { data: PdfData }) => {
           </View>
           <View style={styles.infoBox}>
             <Text style={styles.label}>Price</Text>
-            <Text style={styles.value}>Rs. {current_price || "TBA"}</Text>
+            <Text style={styles.value}>$ {current_price || "TBA"}</Text>
           </View>
           <View style={styles.infoBox}>
             <Text style={styles.label}>Destinations</Text>

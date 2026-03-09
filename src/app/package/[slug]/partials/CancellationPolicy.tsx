@@ -30,7 +30,7 @@ const CancellationPolicy: React.FC<IProps> = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 rounded-[3rem] overflow-hidden mt-2">
-        <div className="p-10 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white hover:bg-gray-50/50 transition-colors group">
+        <div className="p-5 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white hover:bg-gray-50/50 transition-colors group">
           <div className="flex items-center justify-between mb-12">
             <span className="text-6xl font-black text-gray-100 group-hover:text-rose-100 transition-colors">
               01
@@ -63,7 +63,7 @@ const CancellationPolicy: React.FC<IProps> = ({
           />
         </div>
 
-        <div className="p-10 border-b lg:border-b-0 lg:border-r border-gray-200 bg-gray-50/30 hover:bg-gray-50/80 transition-colors group">
+        <div className="p-5 border-b lg:border-b-0 lg:border-r border-gray-200 bg-gray-50/30 hover:bg-gray-50/80 transition-colors group">
           <div className="flex items-center justify-between mb-12">
             <span className="text-6xl font-black text-gray-200 group-hover:text-primary-100 transition-colors">
               02
@@ -92,7 +92,7 @@ const CancellationPolicy: React.FC<IProps> = ({
               </p>
               <p className="text-lg font-bold text-gray-900">
                 Full 100% Balance
-              </p>
+              </p>  
               <p className="text-sm text-gray-500 italic">
                 Within 30 Days of arrival
               </p>
@@ -105,24 +105,22 @@ const CancellationPolicy: React.FC<IProps> = ({
           />
         </div>
 
-        <div className="p-10 bg-white hover:bg-gray-50/50 transition-colors group">
+        <div className="p-5 bg-white hover:bg-gray-50/50 transition-colors group">
           <div className="flex items-center justify-between mb-12">
             <span className="text-6xl font-black text-gray-100 group-hover:text-gray-200 transition-colors">
               03
-            </span>
+            </span> 
             <ScrollText size={32} className="text-gray-900" />
           </div>
           <h3 className="text-xl font-black uppercase tracking-widest text-gray-900 mb-8">
             Standard Terms
           </h3>
 
-          <div className="max-h-100 overflow-y-auto pr-4 custom-scrollbar">
             <RichText
               content={termsAndConditions || ""}
               className="prose prose-sm prose-p:text-gray-500 prose-li:text-gray-500 prose-strong:text-gray-900"
             />
-          </div>
-        </div>
+        </div>  
       </div>
     </section>
   );

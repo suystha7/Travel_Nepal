@@ -29,8 +29,6 @@ export const useBlogActions = (
     }
 
     const previousLikeState = isLiked;
-
-    // optimistic update
     onLikeToggle();
 
     try {
@@ -40,7 +38,6 @@ export const useBlogActions = (
       })) as ApiResponse;
 
       if (response?.error) {
-        // rollback
         onLikeToggle();
         showErrorMessage(
           response.error.data.message || "Failed to update like status."
@@ -54,7 +51,6 @@ export const useBlogActions = (
         showSuccessMessage("You liked this post.");
       }
     } catch (error) {
-      // rollback UI
       onLikeToggle();
       console.error("Like error:", error);
       showErrorMessage("Something went wrong while updating like.");
