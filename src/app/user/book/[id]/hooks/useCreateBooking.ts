@@ -6,7 +6,10 @@ import {
 } from "../schema/bookingValidationSchema";
 import { usePostDataMutation } from "@/core/api/api";
 import { endpoints } from "@/core/api/endpoints";
-import { showErrorMessage, showSuccessMessage } from "@/utils/toastMessage/toast.message";
+import {
+  showErrorMessage,
+  showSuccessMessage,
+} from "@/utils/toastMessage/toast.message";
 import handleErrors from "@/utils/handleError";
 
 interface IProps {
@@ -15,7 +18,8 @@ interface IProps {
 }
 
 export const useCreateBooking = ({ step }: IProps) => {
-  const [createBooking, { isLoading, isError, isSuccess }] = usePostDataMutation();
+  const [createBooking, { isLoading, isError, isSuccess }] =
+    usePostDataMutation();
 
   const initialValues: BookingValidationSchemaType = {
     user: "",
@@ -42,7 +46,8 @@ export const useCreateBooking = ({ step }: IProps) => {
 
   const formik = useFormik<BookingValidationSchemaType>({
     initialValues,
-    validationSchema: step === 0 ? step1ValidationSchema : step2ValidationSchema,
+    validationSchema:
+      step === 0 ? step1ValidationSchema : step2ValidationSchema,
     onSubmit: async (values) => {
       if (step !== 2) return;
 
@@ -54,11 +59,15 @@ export const useCreateBooking = ({ step }: IProps) => {
 
         if (response?.error) {
           handleErrors(response, formik.setErrors);
-          showErrorMessage(response.error.data?.message || "Something went wrong");
+          showErrorMessage(
+            response.error.data?.message || "Something went wrong"
+          );
         }
 
         if (response?.data) {
-          showSuccessMessage(response.data.message || "Booking created successfully");
+          showSuccessMessage(
+            response.data.message || "Booking created successfully"
+          );
           formik.resetForm();
         }
       } catch (error) {

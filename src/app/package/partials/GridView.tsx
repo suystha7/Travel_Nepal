@@ -125,8 +125,7 @@ const GridView: React.FC<IProps> = ({ content }) => {
                     </div>
                     {packageItem?.previous_price && (
                       <span className="text-xs text-gray-400 line-through">
-                        ${" "}
-                        {Number(packageItem?.previous_price).toLocaleString()}
+                        $ {Number(packageItem?.previous_price).toLocaleString()}
                       </span>
                     )}
                   </div>

@@ -92,7 +92,7 @@ const CancellationPolicy: React.FC<IProps> = ({
               </p>
               <p className="text-lg font-bold text-gray-900">
                 Full 100% Balance
-              </p>  
+              </p>
               <p className="text-sm text-gray-500 italic">
                 Within 30 Days of arrival
               </p>
@@ -109,18 +109,18 @@ const CancellationPolicy: React.FC<IProps> = ({
           <div className="flex items-center justify-between mb-12">
             <span className="text-6xl font-black text-gray-100 group-hover:text-gray-200 transition-colors">
               03
-            </span> 
+            </span>
             <ScrollText size={32} className="text-gray-900" />
           </div>
           <h3 className="text-xl font-black uppercase tracking-widest text-gray-900 mb-8">
             Standard Terms
           </h3>
 
-            <RichText
-              content={termsAndConditions || ""}
-              className="prose prose-sm prose-p:text-gray-500 prose-li:text-gray-500 prose-strong:text-gray-900"
-            />
-        </div>  
+          <RichText
+            content={termsAndConditions || ""}
+            className="prose prose-sm prose-p:text-gray-500 prose-li:text-gray-500 prose-strong:text-gray-900"
+          />
+        </div>
       </div>
     </section>
   );

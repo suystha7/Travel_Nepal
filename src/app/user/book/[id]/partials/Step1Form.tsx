@@ -1,20 +1,20 @@
-import React from "react"
-import { useFormikContext, getIn } from "formik"
-import { BookingValidationSchemaType } from "../schema/bookingValidationSchema"
+import React from "react";
+import { useFormikContext, getIn } from "formik";
+import { BookingValidationSchemaType } from "../schema/bookingValidationSchema";
 
 type InputProps = {
-  name: string
-  label: string
-  type: string
-}
+  name: string;
+  label: string;
+  type: string;
+};
 
 const InputField = ({ name, label, type }: InputProps) => {
   const { handleChange, handleBlur, values, errors, touched } =
-    useFormikContext<BookingValidationSchemaType>()
+    useFormikContext<BookingValidationSchemaType>();
 
-  const error = getIn(errors, name)
-  const isTouched = getIn(touched, name)
-  const value = getIn(values, name)
+  const error = getIn(errors, name);
+  const isTouched = getIn(touched, name);
+  const value = getIn(values, name);
 
   return (
     <div className="flex flex-col gap-1">
@@ -44,11 +44,11 @@ const InputField = ({ name, label, type }: InputProps) => {
         <span className="text-sm text-red-500">{error}</span>
       )}
     </div>
-  )
-}
+  );
+};
 
 const Step1Form = () => {
-  const { values } = useFormikContext<BookingValidationSchemaType>()
+  const { values } = useFormikContext<BookingValidationSchemaType>();
 
   return (
     <div className="space-y-10">
@@ -138,7 +138,7 @@ const Step1Form = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Step1Form
+export default Step1Form;

@@ -57,7 +57,7 @@ const BookingForm: React.FC<ITicketOverviewProps> = ({ booking }) => {
           />
         </div>
         <div className="w-1/2 ml-5">
-          <TicketOverview booking={booking}/>
+          <TicketOverview booking={booking} />
         </div>
       </div>
     </>

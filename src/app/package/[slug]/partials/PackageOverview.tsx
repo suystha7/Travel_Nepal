@@ -83,7 +83,12 @@ const PackageOverview: React.FC<IProps> = ({
   const sections = [
     {
       id: "overview",
-      component: <Overview overview={packageData?.itinerary} packageData={packageData?.description}/>,
+      component: (
+        <Overview
+          overview={packageData?.itinerary}
+          packageData={packageData?.description}
+        />
+      ),
     },
     {
       id: "itinerary",
