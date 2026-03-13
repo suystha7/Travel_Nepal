@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { HiOutlineDocumentArrowDown } from "react-icons/hi2";
-import { Utensils, Bed, ChevronDown, Mountain, Activity } from "lucide-react";
+import { Utensils, Bed, ChevronDown, Activity, Circle } from "lucide-react";
 import RichText from "@/utils/richText";
 
 interface IProps {
@@ -22,7 +22,7 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
   };
 
   return (
-    <section id="itinerary" className="max-w-7xl mx-auto px-4">
+    <section id="itinerary" className="max-w-5xl mx-auto px-4">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
         <div className="space-y-2">
           <span className="text-primary-600 font-bold uppercase tracking-widest text-sm">
@@ -35,59 +35,52 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
 
         <button
           onClick={handleDownloadPdf}
-          className="group flex items-center gap-3 bg-primary-700 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:shadow-2xl hover:-trangray-y-1 active:scale-95"
+          className="group flex items-center gap-3 bg-primary-500 hover:bg-black text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300"
         >
-          <HiOutlineDocumentArrowDown
-            size={22}
-            className="group-hover:animate-bounce"
-          />
+          <HiOutlineDocumentArrowDown size={22} />
           <span>Download PDF Guide</span>
         </button>
       </div>
 
-      <div className="relative space-y-6">
-        <div className="absolute left-5 top-4 bottom-4 w-0.5 bg-linear-to-b from-primary-200 via-gray-200 to-transparent hidden md:block" />
-
+      <div className="relative space-y-4">
         {itinerary?.map((day, i) => {
           const isOpen = activeIndex === i;
 
           return (
-            <div key={day?.id || i} className="relative pl-0 md:pl-14">
+            <div key={day?.id || i} className="group">
               <div
-                className={`hidden md:flex absolute left-0 top-2 w-11 h-11 rounded-full border-2 z-10 items-center justify-center font-bold transition-all duration-500 ${
-                  isOpen
-                    ? "bg-primary-600 border-primary-600 text-white  shadow-primary-200 scale-110"
-                    : "bg-white border-gray-200 text-gray-400"
-                }`}
-              >
-                {day?.day}
-              </div>
-
-              <div
-                className={`rounded-xl transition-all duration-500 ${
+                className={`border rounded-xl transition-all duration-500 overflow-hidden ${
                   isOpen
                     ? "bg-white border-gray-200"
-                    : "bg-gray-100/50 border-transparent hover:border-gray-200"
+                    : "bg-gray-50/50 border-transparent hover:bg-white hover:border-gray-200"
                 }`}
               >
                 <button
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between p-8 text-left"
                   onClick={() => setActiveIndex(isOpen ? null : i)}
                 >
-                  <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-6">
                     <span
-                      className={`md:hidden text-xs font-bold uppercase tracking-tighter ${isOpen ? "text-primary-600" : "text-gray-400"}`}
+                      className={`text-sm font-black w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                        isOpen
+                          ? "bg-primary-600 text-white"
+                          : "bg-white text-gray-400 border border-gray-100"
+                      }`}
                     >
-                      Day {day?.day}
+                      {day?.day < 10 ? `0${day?.day}` : day?.day}
                     </span>
                     <h3
-                      className={`text-xl font-bold transition-colors ${isOpen ? "text-gray-900" : "text-gray-500"}`}
+                      className={`text-xl font-bold ${
+                        isOpen ? "text-gray-900" : "text-gray-500"
+                      }`}
                     >
                       {day?.title}
                     </h3>
                   </div>
                   <ChevronDown
-                    className={`transition-transform duration-500 text-gray-400 ${isOpen ? "rotate-180 text-primary-600" : ""}`}
+                    className={`transition-transform duration-500 ${
+                      isOpen ? "rotate-180 text-primary-600" : "text-gray-300"
+                    }`}
                   />
                 </button>
 
@@ -99,41 +92,44 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-6 pt-0 space-y-8">
+                    <div className="px-8 pb-8 space-y-8">
                       <RichText
                         content={day?.description}
-                        className="text-gray-600 leading-relaxed text-base"
+                        className="text-gray-600 leading-relaxed text-lg border-l-4 border-primary-500 pl-4"
                       />
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {day.activities?.length > 0 && (
-                          <SectionCard
-                            icon={<Activity size={16} />}
-                            label="Activities"
-                            variant="indigo"
-                            items={day.activities}
-                          />
-                        )}
-
-                        {day.meals?.length > 0 && (
-                          <SectionCard
-                            icon={<Utensils size={16} />}
-                            label="Dining"
-                            variant="amber"
-                            items={day.meals}
-                          />
-                        )}
-
-                        {day.accommodations?.length > 0 && (
-                          <div className="md:col-span-2">
-                            <SectionCard
-                              icon={<Bed size={16} />}
-                              label="Stay & Accommodation"
-                              variant="emerald"
+                      <div className="rounded-xl ">
+                        <div className="py-2">
+                          <div className="divide-y divide-gray-100">
+                            <SectionItem
+                              icon={
+                                <Activity
+                                  size={18}
+                                  className="text-blue-500"
+                                />
+                              }
+                              label="Activities"
+                              items={day.activities}
+                            />
+                            <SectionItem
+                              icon={
+                                <Utensils
+                                  size={18}
+                                  className="text-secondary-500"
+                                />
+                              }
+                              label="Dining"
+                              items={day.meals}
+                            />
+                            <SectionItem
+                              icon={
+                                <Bed size={18} className="text-red-500" />
+                              }
+                              label="Stay"
                               items={day.accommodations}
                             />
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -147,37 +143,26 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
   );
 };
 
-const SectionCard = ({ icon, label, variant, items }: any) => {
-  const styles: any = {
-    indigo: "bg-indigo-50/50 text-indigo-700 border-indigo-100",
-    amber: "bg-amber-50/50 text-amber-700 border-amber-100",
-    emerald: "bg-emerald-50/50 text-emerald-700 border-emerald-100",
-  };
+const SectionItem = ({ icon, label, items }: any) => {
+  if (!items || items.length === 0) return null;
 
   return (
-    <div
-      className={`p-6 rounded-2xl border ${styles[variant]} backdrop-blur-sm`}
-    >
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-8 h-8 flex items-center justify-center rounded-xl bg-white">
+    <div className="py-6 first:pt-0 last:pb-0 flex flex-col md:flex-row gap-4 md:gap-10">
+      <div className="flex items-center gap-3 min-w-30 self-start">
+        <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center">
           {icon}
         </div>
-        <span className="text-base font-black tracking-widest">{label}</span>
+        <span className="font-bold text-gray-900 text-sm">{label}</span>
       </div>
 
-      <div className="space-y-3">
+      <div className="flex-1 space-y-4">
         {items.map((item: any) => (
-          <div
-            key={item.id}
-            className="group/item bg-white/60 hover:bg-white border border-white/50 rounded-xl p-4 transition-all duration-300"
-          >
-            <h4 className="font-bold text-gray-900 text-base group-hover/item:text-primary-600 transition-colors">
-              {item.title}
-            </h4>
+          <div key={item.id} className="relative">
+            <h5 className="font-bold text-gray-800 text-base">{item.title}</h5>
             {item.description && (
               <RichText
                 content={item.description}
-                className="text-sm text-gray-500 mt-2 leading-normal"
+                className="text-sm text-gray-500 mt-1 leading-relaxed"
               />
             )}
           </div>

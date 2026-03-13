@@ -1,7 +1,7 @@
 import Input from "@/components/common/Input";
 import React from "react";
 
-const Step2Form = () => {
+const Step1Form = () => {
   return (
     <div>
       <h2 className="typography-sub-h2-medium text-grey-800 pb-5">
@@ -32,4 +32,4 @@ const Step2Form = () => {
   );
 };
 
-export default Step2Form;
+export default Step1Form;

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, XCircle, Info } from "lucide-react";
+import { CheckCircle2, XCircle, Info, ShieldCheck } from "lucide-react";
 import {
   IPackageDetailsExclusion,
   IPackageDetailsInclusion,
@@ -15,75 +15,86 @@ interface IProps {
   notices: IPackageNotice[];
 }
 
-const ColumnHeader = ({ title }: { title: string }) => (
-  <div className="flex items-center mb-6">
-    <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-  </div>
-);
-
 const Inclusions: React.FC<IProps> = ({ inclusions, exclusions, notices }) => {
   return (
     <section id="inclusions" className="w-full bg-white">
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="mb-8">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="mb-10 flex items-center gap-4">
+          <h2 className="text-4xl font-black text-gray-900 tracking-tight">
             Trip Particulars
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          <div className="bg-tertiary-50/50 rounded-3xl p-8 border border-tertiary-100 hover:border-tertiary-200 transition-all duration-300 group">
-            <ColumnHeader title="Good to Know" />
-            <ul className="space-y-5">
-              {notices?.map((item, index) => (
-                <li key={index} className="flex gap-3">
-                  <Info
-                    size={18}
-                    className="text-tertiary-600 shrink-0 mt-0.5"
-                  />
-                  <RichText
-                    content={item?.description || ""}
-                    className="text-gray-600 text-sm leading-relaxed prose prose-sm max-w-none prose-p:m-0"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="">
+          <div className="flex flex-col">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16 my-6">
+              <div className="flex items-start gap-3 md:w-48 shrink-0">
+                <CheckCircle2 size={20} className="text-emerald-500" />
+                <h3 className="font-bold text-sm uppercase tracking-widest text-emerald-500">
+                  Included
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-x-12 gap-y-4 flex-1">
+                {inclusions?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 min-w-60 flex-1"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                    <RichText
+                      content={item?.description || ""}
+                      className="text-gray-600 text-sm leading-relaxed prose-p:m-0"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="bg-primary-50/50 rounded-3xl p-8 border border-primary-100 hover:border-primary-300 transition-all duration-300 group shadow-sm">
-            <ColumnHeader title="What's Included" />
-            <ul className="space-y-5">
-              {inclusions?.map((item, index) => (
-                <li key={index} className="flex gap-3">
-                  <CheckCircle2
-                    size={18}
-                    className="text-primary-600 shrink-0 mt-0.5"
-                  />
-                  <RichText
-                    content={item?.description || ""}
-                    className="text-gray-600 text-sm leading-relaxed prose prose-sm max-w-none prose-p:m-0"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16 my-6">
+              <div className="flex items-start gap-3 md:w-48 shrink-0">
+                <XCircle size={20} className="text-rose-500" />
+                <h3 className="font-bold text-sm uppercase tracking-widest text-rose-500">
+                  Excluded
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-x-12 gap-y-4 flex-1">
+                {exclusions?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 min-w-60 flex-1"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-2 shrink-0" />
+                    <RichText
+                      content={item?.description || ""}
+                      className="text-gray-600 text-sm leading-relaxed prose-p:m-0"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="bg-rose-50/50 rounded-3xl p-8 border border-rose-100 hover:border-rose-300 transition-all duration-300 group shadow-sm">
-            <ColumnHeader title="What's Excluded" />
-            <ul className="space-y-5">
-              {exclusions?.map((item, index) => (
-                <li key={index} className="flex gap-3">
-                  <XCircle
-                    size={18}
-                    className="text-rose-500 shrink-0 mt-0.5"
-                  />
-                  <RichText
-                    content={item?.description || ""}
-                    className="text-gray-600 text-sm leading-relaxed prose prose-sm max-w-none prose-p:m-0"
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16 my-6">
+              <div className="flex items-start gap-3 md:w-48 shrink-0">
+                <Info size={20} className="text-yellow-500" />
+                <h3 className="font-bold text-sm uppercase tracking-widest text-yellow-500">
+                  Good to know
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-x-12 gap-y-4 flex-1">
+                {notices?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 min-w-60 flex-1"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                    <RichText
+                      content={item?.description || ""}
+                      className="text-gray-600 text-sm leading-relaxed prose-p:m-0"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
