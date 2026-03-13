@@ -30,9 +30,7 @@ const Page = async ({ params }: PageProps) => {
       />
 
       <div className="padding-x my-10">
-        <BookNowSection
-          packageData={packageDetailsData?.data}
-        />
+        <BookNowSection packageData={packageDetailsData?.data} />
 
         <PackageHighlights
           highlights={packageDetailsData?.data?.highlights}
