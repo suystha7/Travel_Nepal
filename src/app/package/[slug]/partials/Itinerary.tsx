@@ -103,10 +103,7 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
                           <div className="divide-y divide-gray-100">
                             <SectionItem
                               icon={
-                                <Activity
-                                  size={18}
-                                  className="text-blue-500"
-                                />
+                                <Activity size={18} className="text-blue-500" />
                               }
                               label="Activities"
                               items={day.activities}
@@ -122,9 +119,7 @@ const Itinerary = ({ itinerary, packageData }: IProps) => {
                               items={day.meals}
                             />
                             <SectionItem
-                              icon={
-                                <Bed size={18} className="text-red-500" />
-                              }
+                              icon={<Bed size={18} className="text-red-500" />}
                               label="Stay"
                               items={day.accommodations}
                             />

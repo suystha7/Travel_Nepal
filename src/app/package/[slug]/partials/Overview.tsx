@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  IPackageDetailsItinerary,
-} from "../interface/IPackageDetails.interface";
+import { IPackageDetailsItinerary } from "../interface/IPackageDetails.interface";
 import RichText from "@/utils/richText";
 
 interface IOverview {

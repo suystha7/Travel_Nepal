@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  MapPin,
-  Clock,
-  Tags,
-  ChevronRight,
-  Mountain,
-} from "lucide-react";
+import { MapPin, Clock, Tags, ChevronRight, Mountain } from "lucide-react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { IPackageDetailsData } from "../interface/IPackageDetails.interface";
@@ -51,20 +45,23 @@ const BookNowSection: React.FC<IProps> = ({ packageData }) => {
     >
       <div className="bg-white border border-gray-100 rounded-[2.5rem] p-3 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 p-6 lg:p-10">
-          
           <div className="flex-1">
             <div className="flex flex-wrap gap-5 mb-2">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/50 text-blue-600 rounded-xl text-[12px] font-bold tracking-tight border border-blue-100/40">
-                <MapPin size={14} strokeWidth={2.5} /> {packageData?.destination}
+                <MapPin size={14} strokeWidth={2.5} />{" "}
+                {packageData?.destination}
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50/50 text-purple-600 rounded-xl text-[12px] font-bold tracking-tight border border-purple-100/40">
-                <Mountain size={14} strokeWidth={2.5} /> {packageData?.package_type?.name}
+                <Mountain size={14} strokeWidth={2.5} />{" "}
+                {packageData?.package_type?.name}
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50/50 text-emerald-600 rounded-xl text-[12px] font-bold tracking-tight border border-emerald-100/40">
-                <Tags size={14} strokeWidth={2.5} /> {packageData?.category?.name}
+                <Tags size={14} strokeWidth={2.5} />{" "}
+                {packageData?.category?.name}
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50/50 text-orange-600 rounded-xl text-[12px] font-bold tracking-tight border border-orange-100/40">
-                <Clock size={14} strokeWidth={2.5} /> {packageData?.duration} Days
+                <Clock size={14} strokeWidth={2.5} /> {packageData?.duration}{" "}
+                Days
               </span>
             </div>
           </div>
@@ -73,7 +70,9 @@ const BookNowSection: React.FC<IProps> = ({ packageData }) => {
 
           <div className="flex flex-col sm:flex-row items-center gap-8 lg:gap-10">
             <div className="text-center lg:text-right whitespace-nowrap">
-              <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-1">Total Price</p>
+              <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-1">
+                Total Price
+              </p>
               <div className="flex items-baseline justify-center lg:justify-end gap-2">
                 <span className="text-4xl font-black text-gray-900 tracking-tight">
                   ${packageData?.current_price?.toLocaleString()}
